@@ -1,4 +1,7 @@
-class CorporateRunner
+public class CorporateRunner 
 {
-	
+	public static void main(String[] args)
+	{
+		
+	}
 } // CorporateRunner class
