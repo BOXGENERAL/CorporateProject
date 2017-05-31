@@ -1,4 +1,15 @@
 class Corporate
 {
-
+	int numDepartment;
+	double cashflow;
+	String name, line, fileName = "corporate.txt";
+	
+	public Corporate()
+	{
+		try
+		{
+			
+		} 		
+	} // Constructor I
 } // Corporate class
+
