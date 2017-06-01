@@ -1,9 +1,8 @@
 public class CashFlow 
    {
-      double profit, interest, cash;
-      double e, c, j, m;
-      String paydate;
-      final int month= 12;
+      private double profit, interest, cash;
+      private  String paydate;
+      private final int MONTH= 12;
    
        public double getProfit ()
       {
@@ -17,27 +16,25 @@ public class CashFlow
    
        public double calculateprofit()
       {
-         double cap= (cash/profit)*100;  //calculating the total profit of each year
-         return cap;
+         profit+= (cash/profit)*100;  //calculating the total profit of each year
+         return profit;
       }
    
        public double calculateCompoundInterest()
       {
-         c= cash*(1+interest/4);
-         j= Math.pow(c, 16); 				//calculating the interest in quaterly of one year
-         return j;
+         interest+= Math.pow((cash*(1+interest/4)), 16);	    //calculating the interest in quaterly of one year
+         return interest;
       }
    
        public double calculateMonthlyPayment()
       {
-         m= cash*(1+interest/12);
-         e= Math.pow(m, interest*12); 	//calculating the profit for each month 
-         return e;
+         cash+= Math.pow((cash*(1+interest/MONTH)), interest*MONTH); 	//calculating the profit for each month 
+         return cash;
       }
    
        public String toString()
       {
-         String c= "The compound interest is: "+j+"\nThe total profit is: "+profit+"\nThe monthly payment is: "+e;
+         String c= "The compound interest is: "+interest+"\nThe total profit is: "+profit+"\nThe monthly payment is: "+cash;
          return c;
       }
    }
