@@ -1,1 +1,43 @@
-
+public class CashFlow 
+   {
+      double profit, interest, cash;
+      double e, c, j, m;
+      String paydate;
+      final int month= 12;
+   
+       public double getProfit ()
+      {
+         return profit;
+      }
+   
+       public void getProfit (double p)
+      {
+         profit= p;
+      }
+   
+       public double calculateprofit()
+      {
+         double cap= (cash/profit)*100;  //calculating the total profit of each year
+         return cap;
+      }
+   
+       public double calculateCompoundInterest()
+      {
+         c= cash*(1+interest/4);
+         j= Math.pow(c, 16); 				//calculating the interest in quaterly of one year
+         return j;
+      }
+   
+       public double calculateMonthlyPayment()
+      {
+         m= cash*(1+interest/12);
+         e= Math.pow(m, interest*12); 	//calculating the profit for each month 
+         return e;
+      }
+   
+       public String toString()
+      {
+         String c= "The compound interest is: "+j+"\nThe total profit is: "+profit+"\nThe monthly payment is: "+e;
+         return c;
+      }
+   }
