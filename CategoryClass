@@ -1,0 +1,26 @@
+class Category
+{
+	protected String name;
+	protected double amount;
+	//Constructor Method
+	public Category (String name, String amount)
+	{
+		this.name = name;
+		this.amount = amount;
+	}
+	//Changes the amount of money in the Category
+	public void setAmount (double money)
+	{
+		this.amount = money; 
+	}
+	//Returns the value of the amount in double
+	public void getAmount ()
+	{
+		return amount;
+	}
+	//Displays the information in the Category to String
+	public void toString ()
+	{
+		System.out.print ("Name: " + name + "Amount " + amount);
+	}
+}//Category.class
