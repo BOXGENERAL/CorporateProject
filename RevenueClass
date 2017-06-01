@@ -13,7 +13,7 @@ class Revenue
 	}//Revenue method
 	
 	//CompareTo method that compares the 
-	public static int` compareRevenue (Revenue other)
+	public double compareRevenue (Revenue other)
 	{
 		return this.money - other.money;
 	
@@ -21,7 +21,7 @@ class Revenue
 	}//compareRevenue method
 	
 	//Displays a report on the Revenue
-	public static void toString ()
+	public void toString ()
 	{
 		System.out.print ("Year: " + year + " Month: " + month + "Revenue " + money);
 	}//toString method
