@@ -1,0 +1,28 @@
+class Revenue
+{
+	int year;
+	int month;
+	double money;
+	
+	//Constructor 
+	public Revenue (int year , int month, double money)
+	{
+		this.year = year;
+		this.month = month;
+		this.money = money;
+	}//Revenue method
+	
+	//CompareTo method that compares the 
+	public static int` compareRevenue (Revenue other)
+	{
+		return this.money - other.money;
+	
+	
+	}//compareRevenue method
+	
+	//Displays a report on the Revenue
+	public static void toString ()
+	{
+		System.out.print ("Year: " + year + " Month: " + month + "Revenue " + money);
+	}//toString method
+}//Revenue.class
