@@ -5,26 +5,12 @@ class Revenue
 	protected double money;
 	
 	//Constructor 
-	public Revenue (int time, double money)
+	public Revenue (int year,int month, double money)
 	{
 		//The whole process breaks down the time in year month
 		//The proccess of Calculating year
-		int temp;
-		temp = time/100;
-		this.year = temp;
-		//The proccess of Calculating month
-		int count = 10000;
-		temp = time;
-		for (int i = 0; i < 3;i ++)
-		{
-			while (temp > count)
-			{
-				temp = temp = count;
-			}
-			count = count / 10
-		
-		}
-		this.month = temp;
+		this.year = year;
+		this.month = month;
 		this.money = money;
 	}//Revenue method
 	
