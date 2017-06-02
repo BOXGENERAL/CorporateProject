@@ -1,29 +1,52 @@
 public class CashFlow 
    {
-      private double profit, interest, cash;
-      private  String paydate;
-      private final int MONTH= 12;
+      private double profit, perdictingProfit, interest, cash, debt, amountInterest;
+      private int debtPayDate;
+      
+       public CashFlow(double money)
+       {
+         cash = money;
+         profit = 0;
+         interest= 0;
+         debt = 0;
+         amountInterest = 0;
+         debtPayDate = 0;
+         predictingProfit = 0;
+       }
+       
+       public void setProfit ()
+      {
+         profit = CashFlow.calculateProfit();
+      }
    
        public double getProfit ()
       {
          return profit;
       }
-   
-       public void getProfit (double p)
+      
+      public void setPredictingProfit()
       {
-         profit= p;
+         predictingProfit = CashFlow.calculatePredictingProfit();
+      }
+      
+      public double getPredictingProfit()
+      {
+         return predictingProfit;
+      }
+      
+       public double calculateProfit()
+      {
+         return Revenue.getAmount() - Expenditure.getTotal();
       }
    
-       public double calculateprofit()
+      public double calcultePredictingProfit()
       {
-         profit+= (cash/profit)*100;  //calculating the total profit of each year
-         return profit;
+         return Revenue.getAmount() - Budget.getTotal();
       }
-   
+       
        public double calculateCompoundInterest()
       {
-         interest+= Math.pow((cash*(1+interest/4)), 16);	    //calculating the interest in quaterly of one year
-         return interest;
+         
       }
    
        public double calculateMonthlyPayment()
