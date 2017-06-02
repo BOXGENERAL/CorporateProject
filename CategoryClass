@@ -14,7 +14,7 @@ class Category
 		this.amount = money; 
 	}
 	//Returns the value of the amount in double
-	public void getAmount ()
+	public double getAmount ()
 	{
 		return amount;
 	}
