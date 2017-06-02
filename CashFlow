@@ -44,9 +44,26 @@ public class CashFlow
          return Revenue.getAmount() - Budget.getTotal();
       }
        
-       public double calculateCompoundInterest()
+       private double calculateCompoundInterest(double interest, int time)
       {
-         
+         if (time == 1)
+		   {
+			   return (1+interest);
+		   }
+		   else
+		   {
+			   return (1+interest) * rateInterest (interest, time-1);
+		   }
+      }
+      
+      public void setAmountInterest()
+      {
+         amountInterest = debt + CashFlow.calculateCompoundInterest(interest,//not done. Call calMonth method
+      }
+      
+      private int calMonth()
+      {
+         //insert calculate month code
       }
    
        public double calculateMonthlyPayment()
