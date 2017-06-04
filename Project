@@ -1,0 +1,20 @@
+    public class Project
+   {
+      String name, date;
+      double budget, amount;
+      String project;
+      boolean success;
+   
+       public Project()
+      {
+         try
+         {
+            BufferedReader file= new BufferedReader (new FileReader("Project.txt"));
+            project= String.parseString(file.nextLine());
+         }
+             catch(IOX Exception)
+            {
+               System.out.println("File not existing.");
+            }
+      }
+   }
