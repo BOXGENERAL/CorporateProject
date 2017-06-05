@@ -1,1 +1,9 @@
-
+public class Department {
+  protected String name;
+  
+  public Department(String name1) {
+    name = name1;
+    expenditure();
+    budget();
+  }
+}
