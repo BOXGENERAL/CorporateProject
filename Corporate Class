@@ -1,15 +1,131 @@
+import java.io.*
+import java.util.Scanner;
+
 class Corporate
 {
-	int numDepartment;
-	double cashflow;
-	String name, line, fileName = "corporate.txt";
+	protected int numBudgetFile, NumExpenditureFile, todayYear, todayMonth;
+	protected String name, line, fileName = "corporate.txt";
+	protected Department[] departmentList = new Department[50];
+	protected Project[] projectList = new Project();
+	Scanner sc = new Scanner(System.in);
 	
 	public Corporate()
 	{
 		try
 		{
+			BufferedReader in = new BufferedReader(new FileReader(fileName));
 			
+			line = in.readLine();
+			
+			while (line != null)
+			{
+			
+			}
+		
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"corporate.txt\"");
 		} 		
 	} // Constructor I
+	
+	public void setTodayMonth(int todayMonth)
+	{
+		this.todayMonth = other.todayMonth;		
+	} // setTodayMonth mutator
+	
+	public int getTodayMonth()
+	{
+		return todayMonth;
+	} // getTodayMonth accessor
+	
+	public void setTodayYear(int todayYear)
+	{
+		this.todayYear = other.todayYear;
+	} // setTodayYear mutator
+	
+	public int getTodayYear()
+	{
+		return todayYear;
+	} // getTodayYear accessor
+	
+	public void newDepartment()
+	{		
+		System.out.println("What is the name of the new department?");
+		name = sc.nextLine();
+		
+		Department(name);		
+	} // newDepartment method
+	
+	public void showExpenditure()
+	{
+		Expenditure.toString();
+	} // showExpenditure method
+	
+	public void showRevenue()
+	{
+		Revenue.toString();
+	} // showRevenue method
+	
+	public void showBudget()
+	{
+		Budget.toString();
+	} // showBudget method
+	
+	public void addRevenue(int year, int month, double amount)
+	{
+		Revenue(year, month, amount);
+	} // addRevenue method
+	
+	public void budgetReport()
+	{
+		try
+		{
+			BufferedWriter in = new BufferedWriter(new FileWriter("budgetReport.txt", true));
+			
+			while (line != null)
+			{
+			
+			}
+			
+			out.close();
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"budgetReport.txt\"");
+		}
+	} // budgetReport method
+	
+	public void expenditureReport()
+	{
+		try
+		{
+			BufferedWriter in = new BufferedWriter(new FileWriter("expenditureReport.txt", true));
+			
+			while (line != null)
+			{
+			
+			}
+			
+			out.close()
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"expenditureReport\"");
+		}
+	} // expenditureReport method
+	
+	public void createBudgetFile()
+	{
+	
+	} // createBudgetFile method
+	
+	public void createExpenditureFile()
+	{
+	
+	} // createExpenditureFile method
+	
+	public void compareBudExp()
+	{
+	
+	} // compareBudExp method
+	
 } // Corporate class
 
