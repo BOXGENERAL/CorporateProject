@@ -1,0 +1,8 @@
+public class Expenditure extend Department {
+  private int year;
+  private int month;
+  private double total;
+  categoriesList[] = new Category[50];
+  
+  
+}
