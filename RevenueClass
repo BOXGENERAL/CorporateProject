@@ -14,7 +14,7 @@ class Revenue
 		this.money = money;
 	}//Revenue method
 	
-	//CompareTo method that compares the 
+	//CompareTo method that compares the Revenue class
 	public double compareRevenue (Revenue other)
 	{
 		return this.money - other.money;
