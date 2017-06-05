@@ -4,5 +4,10 @@ public class Expenditure extend Department {
   private double total;
   categoriesList[] = new Category[50];
   
+  public Expenditure() {
+    year = Corporate.GetTodayYear();
+		month = Corporate.GetTodayMonth();
+		total = 0;
+  }
   
 }
