@@ -3,12 +3,13 @@ public class Budget extend Department
 	protected int year;
 	protected int month;
 	protected double total;
-	protected Category [] categoryList = new Category();
+	protected Category [] categoryList = new Category[50];
 	//Contstructor
-	public Budget (int year, int month)
+	public Budget ()
 	{
-		this.year + year;
-		this.month + month;
+		year = Corporate.GetTodayYear();
+		month = Corporate.GetTodayMonth();
+		total = 0;
 	}
 	public void calTotal ()
 	{
