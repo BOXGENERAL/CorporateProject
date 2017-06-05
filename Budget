@@ -1,4 +1,4 @@
-class Budget
+public class Budget extend Department
 {
 	protected int year;
 	protected int month;
