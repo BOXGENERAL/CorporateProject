@@ -1,0 +1,20 @@
+public class calculateMonth
+{
+   public static void main (String []args)
+   {
+   //Change the variables if neccessary these are just the algorithms to calculate
+   int currentyear;
+   int currentmonth;
+   int futureyear;
+   int futuremonth;
+   int totalmonth;
+   int totalyear;
+   currentyear = currentyear + 1;
+   totalyear = futureyear - currentyear;
+   totalmonth = ((totalyear*12) + (12 - currentmonth) + (futuremonth));
+   
+   
+   }
+
+
+}
