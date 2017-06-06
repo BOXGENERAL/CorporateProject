@@ -26,8 +26,8 @@ public class Budget extend Department
 	
 		return this.Budget-other.Budget;
 	}
-	public void toString ()
+	public String toString ()
 	{
-		System.out.print("year "+year+" month"+" total"+total);
+		return ("year "+year+" month"+" total"+total);
 	}
 }
