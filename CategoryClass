@@ -3,7 +3,7 @@ class Category
 	protected String name;
 	protected double amount;
 	//Constructor Method
-	public Category (String name, String amount)
+	public Category (String name, double amount)
 	{
 		this.name = name;
 		this.amount = amount;
