@@ -9,7 +9,7 @@ public class Time
 	private int year;
 	private int month;
 	
-	public Time(String time)
+	public Time(String time)//format ex: "2017-06"
 	{
 		
 		this.time = time;
