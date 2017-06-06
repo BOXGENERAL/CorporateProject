@@ -22,16 +22,29 @@
       
       public void changeSuccess() {
         if (amount >= budget)
+        {
             success = true;
+            }
       }
     
       public void saveInfo() {
-        try {
-            
-        }
-        
-        catch() {
-        
-        }
+         try
+         {
+            BufferedWriter in= new BufferedWriter(new BufferedWriter(new FileWriter("Department.txt")));
+            for (int i= 0; i < projectList; i++)
+            {
+               in.write(name);
+               in.newLine();
+               in.write(date);
+               in.newLine();
+               in.write(budget);
+               in.close();
+            }
+         }
+             catch (IOException iox)
+            {
+               System.out.println("Problem loading file.");
+            }
+
       }
    }
