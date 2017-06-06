@@ -1,7 +1,8 @@
 public class CashFlow 
    {
       private double profit, perdictingProfit, interest, cash, debt, amountInterest;
-      private int debtPayDate;
+      private int debtPayYear;
+      private int debtPayMonth;
       
        public CashFlow(double money)
        {
@@ -52,18 +53,24 @@ public class CashFlow
 		   }
 		   else
 		   {
-			   return (1+interest) * rateInterest (interest, time-1);
+			   return (1+interest) * calculateCompoundInterest (interest, time-1);
 		   }
       }
       
       public void setAmountInterest()
       {
-         amountInterest = debt + CashFlow.calculateCompoundInterest(interest,//not done. Call calMonth method
+         amountInterest = debt + CashFlow.calculateCompoundInterest(interest, this.calMonth());
       }
       
       private int calMonth()
       {
-         //insert calculate month code
+         int currentyear = Corperation.getTodayYear();
+   	 int currentmonth = Corperation.getTodayMonth();
+   	 int totalmonth;
+   	 int totalyear;
+   	 currentyear = currentyear + 1;
+   	 totalyear = debtPayYear - currentyear;
+   	 totalmonth = ((totalyear*12) + (13 - currentmonth) + debtPayMonth);
       }
    
        public double calculateMonthlyPayment()
