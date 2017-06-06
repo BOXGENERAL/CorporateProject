@@ -1,9 +1,30 @@
-public class Department {
+public class Department 
+{
   protected String name;
-  
-  public Department(String name1) {
+    
+  public Department(String name1)
+   {
     name = name1;
     expenditure();
     budget();
+  }
+  public void highestExpenditure()
+  {
+  		
+  
+  
+  
+  }
+  public void addCategory (String name, double expen, double bud)
+  {
+  		Expenditure
+  
+  
+  }
+  public void changeCategory (String name, double amount)
+  {
+  
+  
+  
   }
 }
