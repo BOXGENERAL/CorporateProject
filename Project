@@ -24,27 +24,35 @@
         if (amount >= budget)
         {
             success = true;
-            }
+        }
       }
     
       public void saveInfo() {
+        String status;
          try
          {
-            BufferedWriter in= new BufferedWriter(new BufferedWriter(new FileWriter("Department.txt")));
-            for (int i= 0; i < projectList; i++)
-            {
-               in.write(name);
-               in.newLine();
-               in.write(date);
-               in.newLine();
-               in.write(budget);
-               in.close();
+            BufferedWriter out = new BufferedWriter(new FileWriter("Project" + name + ".txt")));
+            out.write(name);
+            out.newLine();
+            out.write("Date: " + year + "/" + month);
+            out.newLine();
+            out.write("Projected Budget: " + budget);
+            out.newLine();
+            out.write("Received Funds: " + amount);
+            out.newLine();
+            if (success) {
+                status = "Done!";
+            } else {
+                status = "Not Done."
             }
+            out.write("Project status: " + status);
+            out.close();
          }
-             catch (IOException iox)
-            {
-               System.out.println("Problem loading file.");
-            }
+          
+          catch (IOException iox)
+          {
+            System.out.println("Problem writting file.");
+          }
 
       }
    }
