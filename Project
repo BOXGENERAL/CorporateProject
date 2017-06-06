@@ -1,20 +1,37 @@
     public class Project
    {
-      String name, date;
-      double budget, amount;
-      String project;
-      boolean success;
+      private String name;
+      private double budget, amount;
+      private boolean success;
+      private int year;
+      private int month;
    
-       public Project()
+       public Project(String name1, double bud, double startFund)
       {
-         try
-         {
-            BufferedReader file= new BufferedReader (new FileReader("Project.txt"));
-            project= String.parseString(file.nextLine());
-         }
-             catch(IOX Exception)
-            {
-               System.out.println("File not existing.");
-            }
+        name = name1;
+        budget = bud;
+        amount = startFund;
+        success = false;
+        year = Corperate.getTodayYear();
+        month = Corperate.getTodayMonth();
+      }
+      
+      public void addAmount(double fund) {
+        amount += fund;
+      }
+      
+      public void changeSuccess() {
+        if (amount >= budget)
+            success = true;
+      }
+    
+      public void saveInfo() {
+        try {
+            
+        }
+        
+        catch() {
+        
+        }
       }
    }
