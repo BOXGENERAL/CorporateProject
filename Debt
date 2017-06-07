@@ -1,0 +1,11 @@
+public class Debt {
+  private double interest, amountInterest, debtAmount;
+  private int payYear, payMonth;
+  
+  public Debt(double debt, double interest1, int year, int month) {
+    interest = interest1;
+    debtAmount = debt;
+    payYear = 
+    amountInterest = 
+  }
+}
