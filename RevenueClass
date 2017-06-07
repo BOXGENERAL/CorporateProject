@@ -23,7 +23,7 @@ class Revenue
 	}//compareRevenue method
 	
 	//Displays a report on the Revenue
-	public void toString ()
+	public String toString ()
 	{
 		System.out.print ("Year: " + year + " Month: " + month + "Revenue " + money);
 	}//toString method
