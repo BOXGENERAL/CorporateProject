@@ -1,13 +1,55 @@
-public class Expenditure extend Department {
-  private int year;
-  private int month;
-  private double total;
-  categoriesList[] = new Category[50];
-  
-  public Expenditure() {
-    year = Corporate.GetTodayYear();
-		month = Corporate.GetTodayMonth();
-		total = 0;
-  }
-  
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Expenditure
+{
+	//file input
+	protected Time[] time;
+	protected double[] total;
+	
+
+	int numExpenditure,numCategory;
+	Category[] categoryList;
+	
+	
+	public Expenditure()
+	{
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader("expenditure.txt"));
+			BufferedReader br2 = new BufferedReader(new FileReader("category.txt"));
+			
+			numExpenditure = Integer.parseInt(br.readLine());
+			time = new Time[numExpenditure];
+			total = new double[numExpenditure];
+						
+			for(int i = 0;i < numExpenditure; i++)
+			{
+				time[0] = new Time(br.readLine());
+				total[0] = Double.parseDouble(br.readLine());
+			}
+			
+			numCategory = Integer.parseInt(br2.readLine());
+			for(int i = 0;i < numCategory; i++)
+			{
+				categoryList[i] = new Category(br2.readLine());
+
+			}
+			br.close();
+			br2.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("expenditure file error");
+			
+		}			
+						
+		
+	}
+
+
+	
+	
+	
 }
