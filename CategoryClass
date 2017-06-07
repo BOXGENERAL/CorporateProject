@@ -19,8 +19,8 @@ class Category
 		return amount;
 	}
 	//Displays the information in the Category to String
-	public void toString ()
+	public String toString ()
 	{
-		System.out.print ("Name: " + name + "Amount " + amount);
+		return ("Name: " + name + "Amount " + amount);
 	}
 }//Category.class
