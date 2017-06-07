@@ -1,6 +1,8 @@
 public class CashFlow 
    {
-      private double profit, perdictingProfit, interest, cash, debt, amountInterest;
+      private double profit, perdictingProfit, interest, cash, totalDebt, amountInterest;
+      private Debt[];
+      private int numDebt;
       private int debtPayYear;
       private int debtPayMonth;
       
@@ -8,10 +10,12 @@ public class CashFlow
        {
          cash = money;
          profit = 0;
+	 Debt[] = new Debt[50];
          interest= 0;
-         debt = 0;
+         totalDebt = 0;
          amountInterest = 0;
          debtPayDate = 0;
+	 numDebt = 0;
          predictingProfit = 0;
        }
        
@@ -23,6 +27,21 @@ public class CashFlow
        public double getProfit ()
       {
          return profit;
+      }
+      
+      public double getCash() {
+      	return cash;
+      }
+      
+      public void changeCash() {
+      	cash = cash + profit;
+      }
+      
+      public boolean checkCash() {
+      	if (cash + predicting * 3 <= 0)
+		return false;
+        else 
+		return true;
       }
       
       public void setPredictingProfit()
@@ -37,12 +56,12 @@ public class CashFlow
       
        public double calculateProfit()
       {
-         return Revenue.getAmount() - Expenditure.getTotal();
+         return Revenue.getAmount() - Corperate.getTotalExp();
       }
    
       public double calcultePredictingProfit()
       {
-         return Revenue.getAmount() - Budget.getTotal();
+         return Revenue.getAmount() - Corperate.getTotalBud();
       }
        
        private double calculateCompoundInterest(double interest, int time)
@@ -75,13 +94,13 @@ public class CashFlow
    
        public double calculateMonthlyPayment()
       {
-         cash+= Math.pow((cash*(1+interest/MONTH)), interest*MONTH); 	//calculating the profit for each month 
-         return cash;
+	double monthlyPayment = Math.pow((cash*(1+interest/MONTH)), interest*MONTH);
+	Department[0].addCategory("debt" + numDebt, 0, monthlyPayment);
       }
    
        public String toString()
       {
-         String c= "The compound interest is: "+interest+"\nThe total profit is: "+profit+"\nThe monthly payment is: "+cash;
-         return c;
+         String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt";
+	 return c;
       }
    }
