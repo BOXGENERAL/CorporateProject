@@ -1,52 +1,40 @@
-import java.io.*;
+/*
+Name:Donggi Lee
+Class:ICS4U
+Date: June 2, 2017
+Description: This class enables to calculate the total Budget from the Category Class in each 
+individual dates
 
-
+*/
 public class Budget extends Department
 {
 	int year, month;
 	double total;
-	int numBudget, numCategory;
-	String [] time;
-	
 	Category [] categoryList = new Category();
 	//Contstructor
 	public Budget ()
 	{
-		//Initializes the current date
-		year = Corporate.GetTodayYear();
-		month = Corporate.GetTodayMonth();
-		try
-		{
-			//Reads From a file
-			BufferedReader b1 = new BufferedReader (new FileReader ("Budget.txt"));
-			BufferedReader b2 = new BufferedReader (new FileReader ("Category.txt"));
-			numBudget = Integer.parseInt (b1.readLine());
-			for (int i = 0;i < numBudget; i++)
-			{
-				time [0]
-			
-			
-			}
-			nu
-		
-		}catch (IOException iox)
-		{
-			System.out.println ("Error Reading File");
-		}
+		year = Corporation.getTodayYear();
+		month = Corporation.getTodayMonth();
+		total = 0;
 	}
+	//Calculates the Total Budget from the categories list
 	public void calTotal ()
 	{
-	
-	
+		for (int i = 0; i < ; i++)
+		{
+			total = categoryList[i].getAmount();	
+		}	
 	}
+	//Returns the Total Budget to Department Class
 	public double getTotal()
 	{
 		return total;
 	}
-	public void compareBudget(Budget)
+	//Compares the Budget
+	public int compareBudget(Budget)
 	{
 		return this.Budget-other.Budget;
-	
 	}
 	//Reports What the Budget class contains
 	public String toString ()
