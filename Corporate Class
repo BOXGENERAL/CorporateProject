@@ -4,9 +4,11 @@ import java.util.Scanner;
 class Corporate
 {
 	protected int numBudgetFile, NumExpenditureFile, todayYear, todayMonth;
+	protected double totalExp, totalBud;
 	protected String name, line, fileName = "corporate.txt";
 	protected Department[] departmentList = new Department[50];
 	protected Project[] projectList = new Project();
+	protected Revenue[] revenueList = new Revenue();
 	Scanner sc = new Scanner(System.in);
 	
 	public Corporate()
@@ -48,6 +50,26 @@ class Corporate
 		return todayYear;
 	} // getTodayYear accessor
 	
+	public void setTotalExp(double totalExp)
+	{
+		this.totalExp = other.totalExp;
+	} // setTotalExp mutator
+	
+	public double getTotalExp()
+	{
+		return totalExp;
+	} // getTotalExp accessor
+	
+	public void setTotalBud(double totalBud)
+	{
+		this.totalBud = other.totalBud;
+	} // setTotalBud mutator
+	
+	public double getTotalBud()
+	{
+		return totalBud;
+	} // getTotalBud accessor
+	
 	public void newDepartment()
 	{		
 		System.out.println("What is the name of the new department?");
@@ -78,6 +100,11 @@ class Corporate
 	
 	public void budgetReport()
 	{
+		double[] budgetRank = new double[50];
+		String[] departmentRank = new String[50];
+		
+		budgetRank[0] = (Department[0].Budget).getTotal();
+		
 		try
 		{
 			BufferedWriter in = new BufferedWriter(new FileWriter("budgetReport.txt", true));
@@ -111,6 +138,10 @@ class Corporate
 			System.out.println("Problem accessing file \"expenditureReport\"");
 		}
 	} // expenditureReport method
+	
+	public double searchCategory
+	
+	public boolean changeCategory(String category, double 
 	
 	public void createBudgetFile()
 	{
