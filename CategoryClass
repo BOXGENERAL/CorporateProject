@@ -1,9 +1,16 @@
+/*
+Name:Donggi Lee
+Class:ICS4U
+Date:June, 1st, 2017
+Description:Stores each individual categories as an array from Expenditure and Budget
+*/
+
 class Category
 {
 	protected String name;
 	protected double amount;
 	//Constructor Method
-	public Category (String name, double amount)
+	public Category (String name, String amount)
 	{
 		this.name = name;
 		this.amount = amount;
@@ -19,8 +26,8 @@ class Category
 		return amount;
 	}
 	//Displays the information in the Category to String
-	public String toString ()
+	public void toString ()
 	{
-		return ("Name: " + name + "Amount " + amount);
+		System.out.print ("Name: " + name + "Amount " + amount);
 	}
 }//Category.class
