@@ -1,42 +1,66 @@
 /*
-Name:Donggi, Daniel
-Class:iCs4u
+Name: Donggi, Henry, Daniel
+Class:ICS4U
 Date: June 1, 2017
 Description: An Array of departments to store what type of Department it is and what kind of categories it 
 contains
+
 */
+
+
+
 
 
 public class Department 
 {
   protected String name;
-  //Constructpr 
-  public Department(String name1)
+  //Construtor
+  public Department(String name)
    {
-    name = name1;
+    this.name = name;
     Expenditure();
     Budget();
   }
-  //Gets the highest Expenditure
-  public double highestExpenditure()
-  {
-  		compareExpenditure
-  }
-  //Gets the highest Budget
-  public double highestBudget()
-  {
-  		compareBudget 
-  }
-  //Adds a new Category to the Department with name, expenditure and Budget
-  public void addCategory (String name, double expen, double bud)
-  {
-  		Expenditure
-  }
-  //Changes the Category value amount
-  public void changeCategory (String name, double amount)
+  public void highestExpenditure()
   {
   		
   
+  
+  
+  }
+  public void highestBudget()
+  {
+  
+  
+  
+  }
+  //Adds a new Category to the Department with name, expenditure and Budget
+  public boolean addCategory (String name, double expen, double bud)
+  {
+  		if (Expenditure.addCategory (name, expen) && Budget.addCategory (name, bud)) 
+  		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+  
+  }
+  //Changes the Category value amount
+  public void changeCategory (boolean confirm, String name, double amount)
+  {
+  		  if (confirm == 'b')
+		  {
+		  		Category abc = Budget.searchCategory(name);
+				abc.setAmount(amount);
+		  }
+		  else 
+		  {
+		  		Category cba = Expenditure.searchCategory (name);
+				cba.setAmount (amount);
+		  
+		  }
   
   }
 }//Department.class
