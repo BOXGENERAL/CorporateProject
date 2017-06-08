@@ -132,7 +132,7 @@ class Corporate
 			
 			}
 			
-			out.close()
+			out.close();
 		} catch (IOException iox)
 		{
 			System.out.println("Problem accessing file \"expenditureReport\"");
