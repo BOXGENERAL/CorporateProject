@@ -1,44 +1,74 @@
 /*
-Name:Donggi Lee
+Name:Donggi, Henry
 Class:ICS4U
 Date: June 2, 2017
-Description: This class enables to calculate the total Budget from the Category Class in each 
-individual dates
-
+Description: Like Expediture class it stores each Category budget in the Category class and
+Calculates the total Budget from the Department class
 */
-    public class Budget extends Department
-   {
-      int year, month;
-      double total;
-      Category [] categoryList = new Category();
-   //Contstructor
-       public Budget ()
-      {
-         year = Corporation.getTodayYear();
-         month = Corporation.getTodayMonth();
-         total = 0;
-      }
-   //Calculates the Total Budget from the categories list
-       public void calTotal ()
-      {
-         for (int i = 0; i < categoryList.length; i++)
-         {
-            total = categoryList[i].getAmount();	
-         }	
-      }
-   //Returns the Total Budget to Department Class
-       public double getTotal()
-      {
-         return total;
-      }
-   //Compares the Budget
-       public int compareBudget(Budget other)
-      {
-         return this.Budget-other.Budget;
-      }
-   //Reports What the Budget class contains
-       public String toString ()
-      {
-         return ("year "+year+" month"+" total"+total);
-      }
-   }Budget class
+
+public class Budget extends Department
+{
+	int year, month;
+	double total;
+	int numCategory;
+	String [] time;
+	Category [] categoryList = new Category[50];
+	//Contstructor
+	public Budget ()
+	{
+		year = Corporation.getTodayYear();
+		month = Corporation.getTodayMonth();
+		total = 0;
+		numCategory = 0;
+	}
+	//Calculates the Total Budget from each Category list
+	public void calTotal ()
+	{
+		for (int i = 0; i < numCategory; i++)
+		{
+			total = total + categoryList[i].getAmount();
+		}
+	}
+	//Returns the Total amount of Budget from each Category
+	public double getTotal()
+	{
+		return total;
+	}
+	//Compares the Budget 
+	public void compareBudget(Budget other)
+	{
+		return this.Budget-other.Budget;
+	}
+	//Reports What the Budget class contains
+	public String toString ()
+	{
+		return ("year "+year+" month"+" total"+total);
+	}
+	//Adds a new Category within, if the category is full it will output an error message to let the\
+	//User know that there is not more space
+	public boolean addCategory (String names, double budget)
+	{
+		try
+		{
+			categoryList[numCategory] = new Category (name, budget);
+			numCategory = numCategory + 1;
+			return true;
+		}catch (ArrayIndexOutOfBoundsException ex)
+		{
+			System.out.println ("Category too full");
+			return false;
+		}
+	}
+	//Searches for the Specific Category through name
+	public Category searchCategory (String name)
+	{
+		for (int i = 0; i < numCategory; i++)
+		{
+			if (categoryList[i].getName().equals (name))
+			{
+				return categoryList [i];
+			}
+		
+		}
+	}
+}//Budget.class
