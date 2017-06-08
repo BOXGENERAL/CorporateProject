@@ -1,22 +1,27 @@
 public class CashFlow 
    {
-      private double profit, perdictingProfit, interest, cash, totalDebt, amountInterest;
-      private Debt[];
+      private double profit, perdictingProfit, cash, totalDebt;
+      private debtList[];
       private int numDebt;
-      private int debtPayYear;
-      private int debtPayMonth;
       
        public CashFlow(double money)
        {
          cash = money;
          profit = 0;
-	 Debt[] = new Debt[50];
-         interest= 0;
+	 debtList[] = new Debt[50];
          totalDebt = 0;
-         amountInterest = 0;
-         debtPayDate = 0;
 	 numDebt = 0;
          predictingProfit = 0;
+       }
+       
+       public void setDebt(double amo, double inte, int year, int month) {
+       		try{
+			debtList[numDebt] = new Debt(amo, inte, year, month);
+			numDebt++;
+		} catch(ArrayIndexOutOfBoundsException ex)
+		{
+			System.out.println ("Debt too full");
+		}
        }
        
        public void setProfit ()
@@ -64,40 +69,6 @@ public class CashFlow
          return Revenue.getAmount() - Corperate.getTotalBud();
       }
        
-       private double calculateCompoundInterest(double interest, int time)
-      {
-         if (time == 1)
-		   {
-			   return (1+interest);
-		   }
-		   else
-		   {
-			   return (1+interest) * calculateCompoundInterest (interest, time-1);
-		   }
-      }
-      
-      public void setAmountInterest()
-      {
-         amountInterest = debt + CashFlow.calculateCompoundInterest(interest, this.calMonth());
-      }
-      
-      private int calMonth()
-      {
-         int currentyear = Corperation.getTodayYear();
-   	 int currentmonth = Corperation.getTodayMonth();
-   	 int totalmonth;
-   	 int totalyear;
-   	 currentyear = currentyear + 1;
-   	 totalyear = debtPayYear - currentyear;
-   	 totalmonth = ((totalyear*12) + (13 - currentmonth) + debtPayMonth);
-      }
-   
-       public double calculateMonthlyPayment()
-      {
-	double monthlyPayment = Math.pow((cash*(1+interest/MONTH)), interest*MONTH);
-	Department[0].addCategory("debt" + numDebt, 0, monthlyPayment);
-      }
-   
        public String toString()
       {
          String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt";
