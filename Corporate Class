@@ -145,7 +145,11 @@ class Corporate
 	
 	public void createBudgetFile()
 	{
-	
+		BufferedWriter out= new BufferedWriter(new FileWriter("Budget.txt"));
+		out.write(name);
+		out.newLine();
+		out.write("Year: "+year);
+		out.newLine();
 	} // createBudgetFile method
 	
 	public void createExpenditureFile()
