@@ -28,6 +28,6 @@ class Category
 	//Displays the information in the Category to String
 	public String toString ()
 	{
-		System.out.print ("Name: " + name + "Amount " + amount);
+		return ("Name: " + name + "Amount " + amount);
 	}
 }//Category.class
