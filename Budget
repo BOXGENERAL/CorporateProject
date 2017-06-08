@@ -6,39 +6,39 @@ Description: This class enables to calculate the total Budget from the Category 
 individual dates
 
 */
-public class Budget extends Department
-{
-	int year, month;
-	double total;
-	Category [] categoryList = new Category();
-	//Contstructor
-	public Budget ()
-	{
-		year = Corporation.getTodayYear();
-		month = Corporation.getTodayMonth();
-		total = 0;
-	}
-	//Calculates the Total Budget from the categories list
-	public void calTotal ()
-	{
-		for (int i = 0; i < ; i++)
-		{
-			total = categoryList[i].getAmount();	
-		}	
-	}
-	//Returns the Total Budget to Department Class
-	public double getTotal()
-	{
-		return total;
-	}
-	//Compares the Budget
-	public int compareBudget(Budget)
-	{
-		return this.Budget-other.Budget;
-	}
-	//Reports What the Budget class contains
-	public String toString ()
-	{
-		return ("year "+year+" month"+" total"+total);
-	}
-}//Budget.class
+    public class Budget extends Department
+   {
+      int year, month;
+      double total;
+      Category [] categoryList = new Category();
+   //Contstructor
+       public Budget ()
+      {
+         year = Corporation.getTodayYear();
+         month = Corporation.getTodayMonth();
+         total = 0;
+      }
+   //Calculates the Total Budget from the categories list
+       public void calTotal ()
+      {
+         for (int i = 0; i < categoryList.length; i++)
+         {
+            total = categoryList[i].getAmount();	
+         }	
+      }
+   //Returns the Total Budget to Department Class
+       public double getTotal()
+      {
+         return total;
+      }
+   //Compares the Budget
+       public int compareBudget(Budget other)
+      {
+         return this.Budget-other.Budget;
+      }
+   //Reports What the Budget class contains
+       public String toString ()
+      {
+         return ("year "+year+" month"+" total"+total);
+      }
+   }Budget class
