@@ -139,9 +139,9 @@ class Corporate
 		}
 	} // expenditureReport method
 	
-	public double searchCategory
+	public double searchCategory(String category, double amount)
 	
-	public boolean changeCategory(String category, double 
+	public boolean changeCategory(String category, double amount)
 	
 	public void createBudgetFile()
 	{
@@ -154,7 +154,11 @@ class Corporate
 	
 	public void createExpenditureFile()
 	{
-	
+		BufferedWriter br= new BufferedWriter(new FileWriter("Budget.txt"));
+		br.write(name);
+		br.newLine();
+		br.write("Year: "+year);
+		br.newLine();
 	} // createExpenditureFile method
 	
 	public void compareBudExp()
