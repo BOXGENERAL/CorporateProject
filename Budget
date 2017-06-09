@@ -1,4 +1,4 @@
-/*
+ /*
 Name:Donggi, Henry
 Class:ICS4U
 Date: June 2, 2017
@@ -14,10 +14,10 @@ public class Budget extends Department
 	String [] time;
 	Category [] categoryList = new Category[50];
 	//Contstructor
-	public Budget ()
+	public Budget (int year, int month)
 	{
-		year = Corporation.getTodayYear();
-		month = Corporation.getTodayMonth();
+		this.year = year;
+		this.month = month;
 		total = 0;
 		numCategory = 0;
 	}
