@@ -70,4 +70,4 @@ public class Expenditure extends Department
 			}
 		}
 	}
-}//Budget.class
+}//Expenditure.class
