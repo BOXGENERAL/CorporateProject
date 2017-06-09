@@ -43,4 +43,8 @@ public class Debt {
 	double monthlyPayment = Math.pow((cash*(1+interest/MONTH)), interest*MONTH);
 	Department[0].addCategory("debt" + numDebt, 0, monthlyPayment);
       }
+      
+      public double getDebtMonthlyPayment() {
+      	return debtMonthlyPay;
+      }
 }
