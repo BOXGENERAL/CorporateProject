@@ -18,6 +18,8 @@ public class CashFlow
        		try{
 			debtList[numDebt] = new Debt(amo, inte, year, month);
 			numDebt++;
+			Department Debt = Corperate.searchDepartment(Debt);
+			Debt.addCategory(debt1, 0, debtList[numDebt].getDebtMonthlyPay());
 		} catch(ArrayIndexOutOfBoundsException ex)
 		{
 			System.out.println ("Debt too full");
