@@ -1,9 +1,9 @@
-import java.io.*;
+import java.io.*
 import java.util.Scanner;
 
 class Corporate
 {
-	protected int numBudgetFile, NumExpenditureFile, todayYear, todayMonth;
+	protected int numBudgetFile, numExpenditureFile, todayYear, todayMonth;
 	protected double totalExp, totalBud;
 	protected String name, line, fileName = "corporate.txt";
 	protected Department[] departmentList = new Department[50];
@@ -13,21 +13,12 @@ class Corporate
 	
 	public Corporate()
 	{
-		try
-		{
-			BufferedReader in = new BufferedReader(new FileReader(fileName));
-			
-			line = in.readLine();
-			
-			while (line != null)
-			{
-			
-			}
-		
-		} catch (IOException iox)
-		{
-			System.out.println("Problem accessing file \"corporate.txt\"");
-		} 		
+		numBudgetFile = 0;
+		numExpenditure = 0;
+		todayYear = 0;
+		todayMonth = 0;
+		totalExp = 0;
+		totalBud = 0;	 		
 	} // Constructor I
 	
 	public void setTodayMonth(int todayMonth)
@@ -100,10 +91,36 @@ class Corporate
 	
 	public void budgetReport()
 	{
+		double j, temp;
+		String temp2;
 		double[] budgetRank = new double[50];
 		String[] departmentRank = new String[50];
 		
 		budgetRank[0] = (Department[0].Budget).getTotal();
+		departmentRank[0] = Department[0].name;
+		
+		for (int i = 1; i < 50 && (Department[i].Budget).getTotal() != null; i++)
+		{
+			budgetRank[i] = (Department[i].Budget).getTotal();
+			departmentRank[i] = Department[i].name;
+		}
+		
+		for (int i = 0; i < 50 && budgetRank[i] != null; i++)
+		{
+			j = i;
+			temp = budgetRank[i];
+			temp2 = departmentRank[i];
+			
+			while (j > 0 && temp < budgetRank[j-1])
+			{
+				budgetRank[j] = budgetRank[j-1];
+				departmentRank[j] = departmentRank[j-1];
+				j = j - 1;
+			}
+			
+			budgetRank[j] = temp;
+			departmentRank[j] = temp2;
+		}
 		
 		try
 		{
@@ -111,7 +128,14 @@ class Corporate
 			
 			while (line != null)
 			{
-			
+				out.write("Budget for Every Department Ranked from Highest to Lowest");
+				out.newLine();
+				
+				for (int i = 0; i < 50 && budgetRank[i] != null; i++)
+				{
+					out.write("" + departmentRank[i] + ": " + budgetRank[i]);
+					out.newLine();
+				}	
 			}
 			
 			out.close();
@@ -123,42 +147,72 @@ class Corporate
 	
 	public void expenditureReport()
 	{
+		double j, temp;
+		String temp2;
+		double[] expenditureRank = new double[50];
+		String[] departmentRank = new String[50];
+		
+		expenditureRank[0] = (Department[0].Expenditure).getTotal();
+		departmentRank[0] = Department[0].name;
+		
+		for (int i = 1; i < 50 && (Department[i].Expenditure).getTotal() != null; i++)
+		{
+			expenditureRank[i] = (Department[i].Expenditure).getTotal();
+			departmentRank[i] = Department[i].name;
+		}
+		
+		for (int i = 0; i < 50 && expenditureRank[i] != null; i++)
+		{
+			j = i;
+			temp = expenditureRank[i];
+			temp2 = departmentRank[i];
+			
+			while (j > 0 && temp < expenditureRank[j-1])
+			{
+				expenditureRank[j] = expenditureRank[j-1];
+				departmentRank[j] = departmentRank[j-1];
+				j = j - 1;
+			}
+			
+			expenditureRank[j] = temp;
+			departmentRank[j] = temp2;
+		}
+		
 		try
 		{
 			BufferedWriter in = new BufferedWriter(new FileWriter("expenditureReport.txt", true));
 			
 			while (line != null)
 			{
-			
+				out.write("Expenditure for Every Department Ranked from Highest to Lowest");
+				out.newLine();
+				
+				for (int i = 0; i < 50 && expenditureRank[i] != null; i++)
+				{
+					out.write("" + departmentRank[i] + ": " + expenditureRank[i]);
+					out.newLine();
+				}	
 			}
 			
 			out.close();
 		} catch (IOException iox)
 		{
-			System.out.println("Problem accessing file \"expenditureReport\"");
+			System.out.println("Problem accessing file \"expenditureReport.txt\"");
 		}
 	} // expenditureReport method
 	
-	public double searchCategory(String category, double amount)
+	public double searchCategory
 	
-	public boolean changeCategory(String category, double amount)
+	public boolean changeCategory(String category, double 
 	
 	public void createBudgetFile()
 	{
-		BufferedWriter out= new BufferedWriter(new FileWriter("Budget.txt"));
-		out.write(name);
-		out.newLine();
-		out.write("Year: "+year);
-		out.newLine();
+	
 	} // createBudgetFile method
 	
 	public void createExpenditureFile()
 	{
-		BufferedWriter br= new BufferedWriter(new FileWriter("Budget.txt"));
-		br.write(name);
-		br.newLine();
-		br.write("Year: "+year);
-		br.newLine();
+	
 	} // createExpenditureFile method
 	
 	public void compareBudExp()
