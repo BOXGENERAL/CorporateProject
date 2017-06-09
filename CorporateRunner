@@ -1,7 +1,62 @@
-public class CorporateRunner 
-{
-	public static void main(String[] args)
-	{
-		
-	}
-} // CorporateRunner class
+  import java.util.*;
+   import java.io.*;
+
+    public class CorporateRunner 
+   {
+       public static void main(String[] args)
+      {
+         Scanner sc = new Scanner (System.in);
+         Corporate p= new Corporate();
+         double a= p.showExpenditure(time, month);
+         System.out.println("Expenditure: \nYear: "+Corporate.getTodayYear()+"\nMonth: "+Corporate.getTodayMonth());
+         double g= p.showRevenue(amount);
+         System.out.println("Revenue: \nYear: "+Corporate.getTodayYear()+"\nMonth: "+Corporate.getTodayMonth()+"\nMoney: "+Revenue().money);
+         double t= p.showBudget(year, month);
+         System.out.println("Budget: \nYear; "+Corporate.getTodayYear()+"\nMonth: "+Corporate.getTodayMonth()+"\nTotalmoney: "+Budget.gettotal());
+      	
+         boolean b= p.createExpenditureFile();
+         if (b== true)
+         {
+            System.out.println("The Expenditure file is created successfully.");
+         }
+         else
+         {
+            System.out.println("The Expenditure file is created unsuccessfully, please try again.");
+         }
+      	
+         boolean c= p.createBudgetFile();
+         if (c== true)
+         {
+            System.out.println("The Budget file is created successfully.");
+         }
+         else
+         {
+            System.out.println("The Budget file is created unsuccessfully.");
+         }
+      	
+			System.out.println("Enter a category that you want to change: ");
+			String category= sc.nextLine();
+			
+			boolean o= p.changeCategory(category, amount);
+         if (o== false)
+         {
+            System.out.println("The category that you entered is not changed, please try again.");
+         }
+         else
+         {
+            System.out.println("The category that you entered is changed successfully.");
+         }
+         CashFlow u= new CashFlow();
+         boolean j= u.checkEnoughCash();
+         if (j== true)
+         {
+				System.out.println("The cash is enough for this company in this year.");
+         }
+         else
+         {
+				System.out.println("The cash is not enough for this company in this year.");
+         }
+         
+         
+      }
+   } // CorporateRunner class
