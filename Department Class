@@ -7,37 +7,26 @@ contains
 
 */
 
-
-
-
-
 public class Department 
 {
   protected String name;
+  Budget budget;
+  Expenditure expenditure;
   //Construtor
   public Department(String name)
-   {
+  {
     this.name = name;
-    Expenditure();
-    Budget();
   }
-  public void highestExpenditure()
+  //Sets today's Date for the budget class and expenditure class
+  public void setDate (int year, int month)
   {
-  		
-  
-  
-  
-  }
-  public void highestBudget()
-  {
-  
-  
-  
+  		budget = new  Budget (year, month);
+		expenditure = new Expenditure (year, month);
   }
   //Adds a new Category to the Department with name, expenditure and Budget
   public boolean addCategory (String name, double expen, double bud)
   {
-  		if (Expenditure.addCategory (name, expen) && Budget.addCategory (name, bud)) 
+  		if (expenditure.addCategory (name, expen) && budget.addCategory (name, bud)) 
   		{
 			return true;
 		}
@@ -50,17 +39,16 @@ public class Department
   //Changes the Category value amount
   public void changeCategory (boolean confirm, String name, double amount)
   {
-  		  if (confirm == 'b')
+  		  if (confirm == true)
 		  {
-		  		Category abc = Budget.searchCategory(name);
+		  		Category abc = budget.searchCategory(name);
 				abc.setAmount(amount);
 		  }
 		  else 
 		  {
-		  		Category cba = Expenditure.searchCategory (name);
+		  		Category cba = expenditure.searchCategory (name);
 				cba.setAmount (amount);
 		  
 		  }
-  
   }
 }//Department.class
