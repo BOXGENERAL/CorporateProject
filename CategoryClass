@@ -1,33 +1,87 @@
-/*
-Name:Donggi Lee
-Class:ICS4U
-Date:June, 1st, 2017
-Description:Stores each individual categories as an array from Expenditure and Budget
-*/
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
-class Category
+public class Category
 {
 	protected String name;
-	protected double amount;
+	protected double[] amount;
+	int num;
+	Time[] time;
+	
 	//Constructor Method
-	public Category (String name, String amount)
+	public Category (String name)
 	{
 		this.name = name;
-		this.amount = amount;
+		
+		try
+		{
+			BufferedReader br = new BufferedReader(new FileReader(name+".txt"));
+			
+			num = Integer.parseInt(br.readLine());
+			
+			for(int i = 0;i<num;i++)
+			{
+				time[0] = new Time(br.readLine());
+				amount[0] = Double.parseDouble(br.readLine());
+			}
+			br.close();
+		}
+		catch(IOException e)
+		{
+			System.out.println("category file error");
+		}
+		
+		
 	}
+	
+	public int searchTime(Time time)
+	{
+		
+		for(int i = 0;i<num;i++)
+		{
+			if(this.time[i].equals(time))
+				return i;
+		}
+		
+		return -1;
+	}
+		
 	//Changes the amount of money in the Category
-	public void setAmount (double money)
+	public boolean setAmount (Time time, double money)
 	{
-		this.amount = money; 
+		int n = searchTime(time);
+		if(n == -1)
+			return false;
+		else
+		{
+			this.amount[n] = money; 
+			return true;
+		}
+		
 	}
-	//Returns the value of the amount in double
-	public double getAmount ()
+	
+	public double amountMonth(Time time)
 	{
-		return amount;
+		int n = searchTime(time);
+		
+		if(n == -1)
+			return 0;
+		else
+		{
+			return amount[n];
+		}
+ 
 	}
-	//Displays the information in the Category to String
-	public String toString ()
+	
+	public double amountYear(int year)
 	{
-		return ("Name: " + name + "Amount " + amount);
+		double total = 0;
+		for(int i = 0;i<num;i++)
+			if(year == time[i].getYear())
+				total+= amount[i];
+				
+		return total;
 	}
+
 }//Category.class
