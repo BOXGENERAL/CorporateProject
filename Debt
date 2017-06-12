@@ -22,9 +22,10 @@ public class Debt {
 		   }
       }
       
-      public void setAmountInterest()
+      public double setAmountInterest()
       {
-         amountInterest = debt + CashFlow.calculateCompoundInterest(interest, this.calMonth());
+         amountInterest = debtAmount + CashFlow.calculateCompoundInterest(interest, this.calMonth());
+			return amountInterest;
       }
       
       private int calMonth()
