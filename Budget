@@ -6,14 +6,14 @@ Description: Like Expediture class it stores each Category budget in the Categor
 Calculates the total Budget from the Department class
 */
 
-public class Budget extends Department
+public class Budget 
 {
 	int year, month;
 	double total;
 	int numCategory;
 	String [] time;
 	Category [] categoryList = new Category[50];
-	//Contstructor
+	//Constructor
 	public Budget (int year, int month)
 	{
 		this.year = year;
@@ -35,9 +35,9 @@ public class Budget extends Department
 		return total;
 	}
 	//Compares the Budget 
-	public void compareBudget(Budget other)
+	public double compareBudget(Budget other)
 	{
-		return this.Budget-other.Budget;
+		return this.total-other.total;
 	}
 	//Reports What the Budget class contains
 	public String toString ()
@@ -46,7 +46,7 @@ public class Budget extends Department
 	}
 	//Adds a new Category within, if the category is full it will output an error message to let the\
 	//User know that there is not more space
-	public boolean addCategory (String names, double budget)
+	public boolean addCategory (String name, double budget)
 	{
 		try
 		{
@@ -70,5 +70,6 @@ public class Budget extends Department
 			}
 		
 		}
+		return categoryList [0];
 	}
 }//Budget.class
