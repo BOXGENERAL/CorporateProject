@@ -17,7 +17,7 @@ public class CashFlow
        		try{
 			debtList[numDebt] = new Debt(amo, inte, year, month);
 			numDebt++;
-			Department Debt = Corporate.searchDepartment("Debt");
+			Department Debt = Corporate.searchDepartment("Debt");//no corporate object
 			Debt.addCategory("debt1", 0, debtList[numDebt].getDebtMonthlyPayment());
 		} catch(ArrayIndexOutOfBoundsException ex)
 		{
