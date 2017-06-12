@@ -18,7 +18,9 @@ class Corporate
 		todayYear = 0;
 		todayMonth = 0;
 		totalExp = 0;
-		totalBud = 0;	 		
+		totalBud = 0;
+      projectList = new Project[50];
+      revenueList = new Revenue[50];	 		
 	} // Constructor I
 	
 	public void setTodayMonth(int todayMonth)
@@ -201,24 +203,27 @@ class Corporate
 		}
 	} // expenditureReport method
 	
-	public double searchCategory
-	
-	public boolean changeCategory(String category, double 
-	
-	public void createBudgetFile()
+	public void calTotalExp()
 	{
 	
-	} // createBudgetFile method
+	} // calTotalExp method
 	
-	public void createExpenditureFile()
+	public void calTotalBud()
 	{
 	
-	} // createExpenditureFile method
+	} // calTotalBud method
 	
-	public void compareBudExp()
-	{
+	public double searchCategory(String category, boolean search)
+   {
+   
+   } // searchCategory method
 	
-	} // compareBudExp method
-	
-} // Corporate class
-
+   public Department searchDepartment(String department)
+   {
+   
+   } // searchDepartment method
+   
+	public boolean changeCategory(String category, boolean search)
+   {
+   
+   } // changeCategory method 
