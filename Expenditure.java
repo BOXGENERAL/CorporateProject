@@ -30,8 +30,8 @@ public class Expenditure
 					
 			for(int i = 0;i < numExpenditure; i++)
 			{
-				time[0] = new Time(br.readLine());
-				amount[0] = Double.parseDouble(br.readLine());
+				time[i] = new Time(br.readLine());
+				amount[i] = Double.parseDouble(br.readLine());
 			}
 			
 			numCategory = Integer.parseInt(br2.readLine());
@@ -87,6 +87,10 @@ public class Expenditure
 			System.out.println("expenditure save file error");
 		}
 		
+		for(int i = 0;i < numCategory; i++)
+		{
+			categoryList[i].saveCategory();
+		}
 	}
 	
 	//accessor:
@@ -127,9 +131,9 @@ public class Expenditure
 	public int searchExp(Time time)
 	{		
 		for(int i = 0;i<numExpenditure;i++)
-			if(time == this.time[i])
+			if(time.equals(this.time[i]))
 				return i;
-		
+			
 		return -1;
 	}
 	
@@ -143,6 +147,7 @@ public class Expenditure
 		
 		return -1;
 	}
+	
 	//methods:
 	public double monthTotal(Time time)
 	{
