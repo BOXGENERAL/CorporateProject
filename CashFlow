@@ -1,16 +1,15 @@
 public class CashFlow 
    {
-      private double profit, perdictingProfit, cash, totalDebt;
-      private debtList[];
+      private double profit, predictingProfit, cash, totalDebt;
+      private Debt debtList[] = new Debt [50];
       private int numDebt;
       
        public CashFlow(double money)
        {
          cash = money;
          profit = 0;
-	 debtList[] = new Debt[50];
          totalDebt = 0;
-	 numDebt = 0;
+			 numDebt = 0;
          predictingProfit = 0;
        }
        
@@ -18,8 +17,8 @@ public class CashFlow
        		try{
 			debtList[numDebt] = new Debt(amo, inte, year, month);
 			numDebt++;
-			Department Debt = Corperate.searchDepartment(Debt);
-			Debt.addCategory(debt1, 0, debtList[numDebt].getDebtMonthlyPay());
+			Department Debt = Corporate.searchDepartment("Debt");
+			Debt.addCategory("debt1", 0, debtList[numDebt].getDebtMonthlyPayment());
 		} catch(ArrayIndexOutOfBoundsException ex)
 		{
 			System.out.println ("Debt too full");
@@ -73,7 +72,7 @@ public class CashFlow
        
        public String toString()
       {
-         String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt";
+         String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt;
 	 return c;
       }
    }
