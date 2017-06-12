@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class Corporate
 {
-	protected int numBudgetFile, numExpenditureFile, todayYear, todayMonth;
+	protected int numDepartment, numBudgetFile, numExpenditureFile, todayYear, todayMonth;
 	protected double totalExp, totalBud;
 	protected String name, line, fileName = "corporate.txt";
 	protected Department[] departmentList = new Department[50];
@@ -13,6 +13,7 @@ class Corporate
 	
 	public Corporate()
 	{
+		numDepartment = 0;
 		numBudgetFile = 0;
 		numExpenditure = 0;
 		todayYear = 0;
@@ -68,7 +69,22 @@ class Corporate
 		System.out.println("What is the name of the new department?");
 		name = sc.nextLine();
 		
-		Department(name);		
+		try
+		{
+			for (int i = 0; i < 50; i++)
+			{
+				if (departmentList[i] == null)
+				{
+					departmentList[i] = new Department(name, todayYear, todayMonth);
+				
+					numDepartment++;
+					i = 50;
+				}
+			}
+		} catch (ArrayIndexOutOfBoundsException ex)
+		{
+			System.out.println("DepartmentList already full!");
+		}			
 	} // newDepartment method
 	
 	public void showExpenditure()
@@ -204,26 +220,149 @@ class Corporate
 	} // expenditureReport method
 	
 	public void calTotalExp()
-	{
-	
+	{		
+		for (int i = 0; i < 50 && Department[i] != null; i++)
+		{
+			totalExp = totalExp + (Department[i].Expenditure).getTotal();
+		}
 	} // calTotalExp method
 	
 	public void calTotalBud()
-	{
-	
+	{		
+		for (int i = 0; i < 50 && Department[i] != null; i++)
+		{
+			totalBud = totalBud + (Department[i].Budget).getTotal();
+		}
 	} // calTotalBud method
 	
 	public double searchCategory(String category, boolean search)
-   	{
+   {
    
-   	} // searchCategory method
+   } // searchCategory method
 	
-   	public Department searchDepartment(String department)
-   	{
+   public Department searchDepartment(String department)
+   {
    
-   	} // searchDepartment method
+   } // searchDepartment method
    
-	public boolean changeCategory(String category, boolean search)
-   	{
+	public boolean changeCategory(String department, boolean option, String category, double num)
+   {
+   	if (option == true)
+		{
+			((Department[department].Expenditue).Category[category]).amount = num;
+		}
+		else if (option == false)
+		{
+			((Department[department].Budget).Category[category]).amount = num;
+		}
+   } // changeCategory method 
+	
+	public void createBudgetFile()
+	{
+		try 
+		{
+			BufferedWriter in = new BufferedWriter(new FileWriter("budgetFile.txt", true);
+			
+			out.write("Budget File");
+			out.newLine();
+			
+			for (int i = 0; i < numDepartment; i++)
+			{
+				for (int j = 0; i < 50; j++)
+				{
+					out.write(((Department[i].Budget).Category[j]).toString());
+					out.newLine();
+				}
+			}
+			
+			out.close();
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"budgetFile.txt\"");
+		}
+	} // createBudgetFile method
+	
+	public void createExpenditureFile()
+	{
+		try 
+		{
+			BufferedWriter in = new BufferedWriter(new FileWriter("expenditureFile.txt", true);
+			
+			out.write("Expenditure File");
+			out.newLine();
+			
+			for (int i = 0; i < numDepartment; i++)
+			{
+				for (int j = 0; i < 50; j++)
+				{
+					out.write(((Department[i].Expenditure).Category[j]).toString());
+					out.newLine();
+				}
+			}
+			
+			out.close();
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"expenditureFile.txt\"");
+		}
+	} // createExpenditureFile method
+	
+	public void compareBudExp()
+	{
+		double[] budget = new double[3];
+		double[]	expenditure = new double[3];
+		
+		try 
+		{
+			BufferedReader in = new BufferedReader(new FileReader("budgetReport.txt");
+			
+			line = in.readLine();
+			
+			for (int i = 0; i < 3 && line != null; i++)
+			{
+				budget[i] = Double.parseDouble(line);
+				
+				line = in.readLine();
+			}
+			
+			in.close();	
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"budgetReport.txt\"");
+		}
+		
+		try
+		{ 
+			BufferedReader in = new BufferedReader(new FileReader("expenditureReport.txt");
+			
+			line = in.readLine();
+			
+			for (int i = 0; i < 3 && line != null; i++)
+			{
+				expenditure[i] = Double.parseDouble(line);
+				
+				line = in.readLine();
+			}
+			
+			in.close();
+		} catch (IOException iox)
+		{
+			System.out.println("Problem accessing file \"expenditureReport.txt\"");
+		}
+		
+		if 
+		
+	} // compareBudExp method
+	
+   public void compareDepartment()
+   {
    
-   	} // changeCategory method 
+   } // compareDepartment method
+   
+   public void compareCategory()
+   {
+   
+   } // compareCategory method
+   
+} // Corporate class
+
