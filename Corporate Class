@@ -214,16 +214,16 @@ class Corporate
 	} // calTotalBud method
 	
 	public double searchCategory(String category, boolean search)
-   {
+   	{
    
-   } // searchCategory method
+   	} // searchCategory method
 	
-   public Department searchDepartment(String department)
-   {
+   	public Department searchDepartment(String department)
+   	{
    
-   } // searchDepartment method
+   	} // searchDepartment method
    
 	public boolean changeCategory(String category, boolean search)
-   {
+   	{
    
-   } // changeCategory method 
+   	} // changeCategory method 
