@@ -7,10 +7,10 @@ Description:Stores each individual categories as an array from Expenditure and B
 
 class Category
 {
-	protected String name;
-	protected double amount;
+	private String name;
+	private double amount;
 	//Constructor Method
-	public Category (String name, String amount)
+	public Category (String name, double amount)
 	{
 		this.name = name;
 		this.amount = amount;
@@ -24,6 +24,11 @@ class Category
 	public double getAmount ()
 	{
 		return amount;
+	}
+	//Returns the name of the Category in String
+	public String getName ()
+	{
+		return name;
 	}
 	//Displays the information in the Category to String
 	public String toString ()
