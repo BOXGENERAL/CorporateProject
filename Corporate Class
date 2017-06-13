@@ -237,12 +237,25 @@ class Corporate
 	
 	public double searchCategory(String category, boolean search)
    {
-   
+      for (int i = 0; i < 50 && categoriesList[i] != null; i++)
+      {
+         if (categoriesList[i].name == category)
+         {
+            search = true;
+            return categoriesList[i].getAmount();
+         }
+      }
    } // searchCategory method
 	
    public Department searchDepartment(String department)
    {
-   
+      for (int i = 0; i < 50 && departmentList[i] != null; i++)
+      {
+         if (departmentList[i].name == department)
+         {
+            return departmentList[i];
+         }
+      }
    } // searchDepartment method
    
 	public boolean changeCategory(String department, boolean option, String category, double num)
@@ -350,7 +363,21 @@ class Corporate
 			System.out.println("Problem accessing file \"expenditureReport.txt\"");
 		}
 		
-		if 
+	   for (int i = 0; i < 3; i++)
+      {
+         if (expenditure[i] < budget[i])
+         {
+            System.out.println("The budget exceeds the expenditure with a difference of " + budget[i]-expenditure[i] + ".");
+         }
+         else if (expenditure[i] > budget[i])
+         {
+            System.out.println("The expenditure exceeds the budget with a difference of " + expenditure[i]-budget[i] + ".");
+         }
+         else 
+         {
+            System.out.println("The expenditure and the budget have the same value.");
+         }
+      }
 		
 	} // compareBudExp method
 	
@@ -361,7 +388,16 @@ class Corporate
    
    public void compareCategory()
    {
-   
+      double highestCategory = 0;
+      
+      for (int i = 0; i < 50 && categoriesList[i] != null; i++)
+      {
+         if (categoriesList[i].amount > highestCategory)
+         {
+            highestCategory = categoriesList[i].amount;
+         }
+      }
+      
    } // compareCategory method
    
 } // Corporate class
