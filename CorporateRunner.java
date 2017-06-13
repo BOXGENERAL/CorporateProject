@@ -16,7 +16,13 @@ public class CorporateRunner
 		Corporate ay = new Corporate();
 		Time time = new Time("2017-06");
 		
-		ay.addExpCategory("office");
+		
+		
+		ay.printExpMonth(time);
+		ay.printRevMonth(time);
+		ay.printCashflowMonth(time);
+		ay.save();
+		
 		
 	}
 } // CorporateRunner class

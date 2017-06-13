@@ -31,8 +31,8 @@ public class Category
 			
 			for(int i = 0;i<numCategory;i++)
 			{
-				time[0] = new Time(br.readLine());
-				amount[0] = Double.parseDouble(br.readLine());
+				time[i] = new Time(br.readLine());
+				amount[i] = Double.parseDouble(br.readLine());
 			}
 			br.close();
 		}
@@ -79,13 +79,17 @@ public class Category
 	{
 		int n = searchTime(time);
 		if(n == -1)
-			return false;
+		{
+			this.time[numCategory] = time;
+			this.amount[numCategory] = money;
+			numCategory++;
+		}
 		else
 		{
 			this.amount[n] = money; 
-			return true;
+			
 		}
-		
+		return true;
 	}
 		
 	//searcher:
