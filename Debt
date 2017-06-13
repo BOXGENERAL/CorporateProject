@@ -24,25 +24,27 @@ public class Debt {
       
       public double setAmountInterest()
       {
-         amountInterest = debtAmount + CashFlow.calculateCompoundInterest(interest, this.calMonth());
+         amountInterest = debtAmount + this.calculateCompoundInterest(interest, this.calMonth());
 			return amountInterest;
       }
       
       private int calMonth()
       {
-         int currentyear = Corperation.getTodayYear();
-   	 int currentmonth = Corperation.getTodayMonth();
-   	 int totalmonth;
-   	 int totalyear;
-   	 currentyear = currentyear + 1;
-   	 totalyear = debtPayYear - currentyear;
-   	 totalmonth = ((totalyear*12) + (13 - currentmonth) + debtPayMonth);
+         int currentyear = Corporate.getTodayYear();
+   	   int currentmonth = Corporate.getTodayMonth();
+   	   int totalmonth;
+   	   int totalyear;
+   	   currentyear = currentyear + 1;
+   	   totalyear = payYear - currentyear;
+   	   totalmonth = ((totalyear*12) + (13 - currentmonth) + payMonth);
+         return totalmonth;
       }
    
        public double calculateMonthlyPayment()
       {
-	double monthlyPayment = Math.pow((cash*(1+interest/MONTH)), interest*MONTH);
-	Department[0].addCategory("debt" + numDebt, 0, monthlyPayment);
+         int totalMonth = this.calMonth();
+	      double monthlyPayment = Math.pow((debtAmount*(1+interest/totalMonth)), interest*totalMonth);
+	      Department[0].addCategory("debt" + CashFlow.getNumDebt(), 0, monthlyPayment);
       }
       
       public double getDebtMonthlyPayment() {
