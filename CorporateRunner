@@ -60,3 +60,206 @@
          
       }
    } // CorporateRunner class
+   
+   
+   
+import java.util.*;
+import java.io.*;
+
+public class CorporateRunner 
+{
+   public static void main(String[] args)
+   {
+      Corporate whole= new Corporate();
+      Scanner input = new Scanner (System.in);
+         
+         
+      	
+      boolean exit = false;
+      int option = 1;
+      int categoryNumber;
+      String name1;
+      String name2;
+      double value1;
+      double value2;
+      int year=0, month=0;
+      boolean confirm = false;
+      int section1;
+      int section2;
+   		//Program for confirming outside current data and introduction
+      System.out.println ("----Welcome to the Corporate Tracker---");
+      System.out.println ("This program is designed to to keep track of records");
+      System.out.println ("from the Corpotate Class");
+      do
+      {
+         //User enters date in this section of the program
+         System.out.println ("Before we start please enter the date:");
+         try
+         {
+            System.out.println ("Year:");
+            year = input.nextInt();
+            System.out.println ("Month:");
+            month = input.nextInt();
+            if (month > 12 || month < 1)
+            {
+               System.out.println ("You have entered invalid Month please try again");
+            }
+            else
+            {
+               confirm = true;
+            }
+            
+         }
+         catch (InputMismatchException ex)
+         {
+            System.out.println ("You have not entered the year or month in the correct format");
+            System.out.println ("Please try again");
+            String flush = input.next();	
+         }
+      }while (confirm == false);
+      whole.setTodayMonth (month);
+      whole.setTodayYear (year);
+      
+      
+      
+   	//Menu Process for adding Departments and Modifying 
+      confirm = false;
+      do
+      {
+         try
+         {
+            confirm = true;
+            System.out.println ("--------------Menu-------------");
+            System.out.println ("Option 1: Manage Departments Input 1");
+            System.out.println ("Option 2: Overview Report Input 2");
+            System.out.println ("Option 3: Manage Projects Input 3");
+            System.out.println ("Option 4: Manage Revenue Input 4");
+            System.out.println ("Option 5: Exit the program Input 5");
+            option = input.nextInt ();
+         }
+         catch (InputMismatchException ex)
+         {
+            System.out.println ("Invalid input format try again");
+            String flush = input.next();
+            confirm = false;
+         }
+      }while (confirm == false);
+      
+      confirm = false;
+   	//Manage Department Option
+      if (option == 1)
+      {
+         do
+         {
+            try
+            {
+               confirm = true;
+               System.out.println ("-----Select category to Manage-----");
+               System.out.println ("1.Add Department Input 1");
+               System.out.println ("2.Manage Budget Department Input 2");
+               option = input.nextInt();
+            }
+            catch (InputMismatchException ex)
+            {
+               System.out.println ("Invalid Input, please try again");
+               String flush = input.next();
+               confirm = false;
+            }
+         }while (confirm == false);
+         confirm = false;
+      	//Add New Department Option
+         if (option == 1)
+         {
+            System.out.println ("---Add the Properties of the Department---");
+            whole.newDepartment();
+         			
+         }
+         //Modifying Department Option
+         else if (option == 2)
+         {
+         			
+            {
+               System.out.println ("Change the Budget of Department");
+               name1 = input.nextLine();
+               whole.searchDepartment(name1);
+            	   
+            }
+         }
+      		
+      }  
+      else if (option == 2)
+      {
+         do
+         {
+            try
+            {
+               System.out.println ("--Report--");
+               System.out.println ("Select the data to Report");
+               System.out.println ("1.HighestBudget and HighestExpenditure ");
+               System.out.println ("2.Revenue");
+               System.out.println ("3.CashFlow and Debt");
+               System.out.println ("4.Specific Category");
+               option = input.nextInt ();
+            }
+            catch (InputMismatchException ex)
+            {
+               System.out.println ("Invalid Input please try again");
+               String flush = input.next();
+            }  
+         }while (confirm == false);
+         if (option == 1)
+         {
+            System.out.println ("The report of highest Budget and Highest Expenditure will be saved in a file");
+            whole.expenditureReport();
+            whole.budgetReport();
+         }
+         else if (option == 2)
+         {
+            System.out.println ("Revenue:");
+            whole.showRevenue();
+         }
+         else if (option == 3)
+         {
+         
+         }
+         //Shows the specific category within. Needs to know what department the category is from to 
+         //Search the specific category
+         else if (option == 4)
+         {
+            System.out.println ("Input the Department name");
+            name1 = input.nextLine();
+            section1 = whole.searchDepartment(name1);
+            if (section1 == 51)
+            {
+               System.out.println ("Such Department does not exist");
+            }
+            else
+            {
+               System.out.println ("Input the specific Category name");
+               name2 = input.nextLine();
+               section2 = whole.searchCategory(name2);
+               if (section2 == 51)
+               {
+                  System.out.printn ("Such Category does not exist");
+               }
+               else
+               {
+                  whole.showCategory ();
+               }
+            
+            }
+            
+         }
+        
+      
+      }
+      else if (option == 3)
+      {
+         System.out.println ("---Project Management--");
+         System.out.println ("Select a project to manage");
+         name1 = input.nextLine();
+         System.out.println (
+      
+      }     
+   }
+} // CorporateRunner class
