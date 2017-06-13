@@ -122,10 +122,11 @@ public class Expenditure
 	{
 		int n = searchExp(time);
 		if(n == -1)
-			return -1;
+			return 0;
 		
 		return amount[n];
 	}
+	
 	
 	//search:
 	public int searchExp(Time time)
@@ -165,6 +166,7 @@ public class Expenditure
 			System.out.println(categoryList[i].getName()+": $"+categoryList[i].amountMonth(time));
 		
 	}
+	
 				
 	public boolean addCategory(String name)
 	{
@@ -201,11 +203,6 @@ public class Expenditure
 		}
 		
 	}
-
-
-
-
-		
 	
 	
 }
