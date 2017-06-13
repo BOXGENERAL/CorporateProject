@@ -31,7 +31,7 @@
             {
                confirm1 = true;
                System.out.println ("--------------Menu-------------");
-               System.out.println ("Option 1: Manage Budget and Expenditure Input 1");
+               System.out.println ("Option 1: Manage Expenditure Input 1");
                System.out.println ("Option 2: Overview Report Input 2");
                System.out.println ("Option 3: Manage Revenue Input 3");
                System.out.println ("Option 4: Manage Cashflow and Debt Input 4");
@@ -99,7 +99,7 @@
             	
             }
          }
-			//Sub Menu 2-2 Output a report
+	//Sub Menu 2-2 Output a report
          else if (option == 2)
          {
             do
@@ -120,11 +120,22 @@
                    confirm2 = false;
                }
             }while (confirm2 == false);
-         	//Sub menu 3-1
-				if (option2 == 1)
-				{
-					
-				}
+            //Sub menu 3-1 Reports Expenditure Categories in the Run menu
+	    if (option2 == 1)
+	    {
+		    System.out.println ("--Expenditure Category Report--");
+		    //Insert method to update
+		
+	    }
+	    else if (option2 == 2)
+	    {
+		    System.out.println ("--Revenue Categories Report--");
+		    //Insert method to update
+	    }
+  	    else if (option2 == 3)
+	    {
+		    System.out.println ("--CashFlow and Debt Report--");
+	    }
 				
 				
 				
