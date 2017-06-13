@@ -4,31 +4,31 @@ public class CashFlow
       private Debt debtList[] = new Debt [50];
       private int numDebt;
       
-       public CashFlow(double money)
-       {
+      public CashFlow(double money)
+      {
          cash = money;
          profit = 0;
          totalDebt = 0;
 			 numDebt = 0;
          predictingProfit = 0;
-       }
-       
-       public void setDebt(double amo, double inte, int year, int month) {
-       		try{
-			debtList[numDebt] = new Debt(amo, inte, year, month);
-			numDebt++;
-			Department Debt = Corporate.searchDepartment("Debt");//no corporate object
-			Debt.addCategory("debt1", 0, debtList[numDebt].getDebtMonthlyPayment());
-		} catch(ArrayIndexOutOfBoundsException ex)
-		{
-			System.out.println ("Debt too full");
-		}
-       }
-       
-       public void setProfit ()
-      {
-         profit = CashFlow.calculateProfit();
       }
+       
+      public void setDebt(double amo, double inte, int year, int month) {
+         try{
+		debtList[numDebt] = new Debt(amo, inte, year, month);
+		numDebt++;
+		Department Debt = Corporate.searchDepartment("Debt");
+		Debt.addCategory("debt1", 0, debtList[numDebt].getDebtMonthlyPayment());
+	} catch(ArrayIndexOutOfBoundsException ex)
+	{
+		System.out.println ("Debt too full");
+	}
+      }
+       
+   public void setProfit ()
+   {
+      profit = this.calculateProfit();
+   }
    
        public double getProfit ()
       {
@@ -44,15 +44,15 @@ public class CashFlow
       }
       
       public boolean checkCash() {
-      	if (cash + predicting * 3 <= 0)
-		return false;
+      	if (cash + predictingProfit * 3 <= 0)
+		      return false;
         else 
-		return true;
+		      return true;
       }
       
       public void setPredictingProfit()
       {
-         predictingProfit = CashFlow.calculatePredictingProfit();
+         predictingProfit = this.calculatePredictingProfit();
       }
       
       public double getPredictingProfit()
@@ -60,19 +60,23 @@ public class CashFlow
          return predictingProfit;
       }
       
-       public double calculateProfit()
-      {
-         return Revenue.getAmount() - Corperate.getTotalExp();
-      }
-   
-      public double calcultePredictingProfit()
-      {
-         return Revenue.getAmount() - Corperate.getTotalBud();
-      }
-       
-       public String toString()
-      {
-         String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt;
-	 return c;
-      }
+   public double calculateProfit()
+   {
+      return Revenue.getAmount() - Corperate.getTotalExp();
    }
+   
+   public double calcultePredictingProfit()
+   {
+      return Revenue.getAmount() - Corperate.getTotalBud();
+   }
+       
+   public int getNumDebt() {
+      return numDebt;
+   }
+       
+   public String toString()
+   {
+      String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt;
+	   return c;
+   }
+}
