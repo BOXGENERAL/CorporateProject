@@ -4,9 +4,10 @@
 
     public class Debt extends Category
    {
-      double rate = 0.05;
-      CashFlow cashflow = new CashFlow();
-      double debt;
+    	
+      protected double rate = 0.05;
+      protected CashFlow cashflow = new CashFlow();
+      protected double debt;
    
    //constructor:
        public Debt()

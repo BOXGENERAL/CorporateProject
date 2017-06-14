@@ -5,15 +5,15 @@
     public class Revenue
    {
    //file 
-      File revenueFile = new File("revenue.txt");
-      File categoryFile = new File("category-R.txt");
+    	protected File revenueFile = new File("revenue.txt");
+    	protected File categoryFile = new File("category-R.txt");
       protected Time[] time;
       protected double[] amount;
    
-      int maxCategory = 100;
-      int maxNum;
-      int numRevenue,numCategory;
-      Category[] categoryList = new Category[maxCategory];
+      protected int maxCategory = 100;
+      protected int maxNum;
+      protected int numRevenue,numCategory;
+      protected Category[] categoryList = new Category[maxCategory];
    
    
        public Revenue()

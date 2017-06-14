@@ -5,14 +5,14 @@ import java.io.*;
 public class Category
 {
 	//file:
-	File f;
+	protected File f;
 	
 	//fields:
 	protected String name;
 	protected double[] amount;
-	int maxNum;
-	int numCategory;
-	Time[] time;
+	protected int maxNum;
+	protected int numCategory;
+	protected Time[] time;
 	
 	//Constructor Method
 	public Category (String name)

@@ -5,19 +5,18 @@
    {
    //field:
       protected String name;
-   
-      File corporate;	
-      Expenditure expenditure;
-      Revenue revenue;
-      CashFlow cashflow;
-      Debt debt;
-      double balance;
+      protected File corporate;	
+      protected Expenditure expenditure;
+      protected Revenue revenue;
+      protected CashFlow cashflow;
+      protected Debt debt;
+      protected double balance;
    
    //time:
-      java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM");
-      Calendar cal = Calendar.getInstance();	
-      Time currentTime = new Time(format.format(cal.getTime()));
-      Time payTime;
+      protected static java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM");
+      protected static Calendar cal = Calendar.getInstance();	
+      protected static Time currentTime = new Time(format.format(cal.getTime()));
+      protected Time payTime;
    
    //constructor:
        public Corporate(String name)
@@ -193,7 +192,7 @@
          debt.saveCategory();
          saveDebt();
          expenditure.update();
-			revenue.update();
+		 revenue.update();
          expenditure.sortTime();
          revenue.sortTime();
          expenditure.saveFile();

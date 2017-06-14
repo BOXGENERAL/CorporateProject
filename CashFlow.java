@@ -5,15 +5,15 @@ import java.io.*;
 public class CashFlow
 {
 	//file:
-	File cashflowFile;
+	protected File cashflowFile;
 	
 	//fields:
-	int maxNum;
-	int numCashflow;
-	Time[] time;
+	protected int maxNum;
+	protected int numCashflow;
+	protected Time[] time;
 	protected double[] amount;
-	Expenditure expenditure;
-	Revenue revenue;
+	protected Expenditure expenditure;
+	protected Revenue revenue;
 	
 	
 	//Constructor Method

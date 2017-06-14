@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Time
 {
-	java.text.SimpleDateFormat format;
+	private java.text.SimpleDateFormat format;
 	private String time;
 	private int year;
 	private int month;

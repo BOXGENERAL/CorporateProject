@@ -5,15 +5,15 @@
     public class Expenditure
    {
    //file 
-      File expenditureFile = new File("expenditure.txt");
-      File categoryFile = new File("category-E.txt");
+    	protected File expenditureFile = new File("expenditure.txt");
+    	protected File categoryFile = new File("category-E.txt");
       protected Time[] time;
       protected double[] amount;
    
-      int maxCategory = 100;
-      int maxNum;
-      int numExpenditure,numCategory;
-      Category[] categoryList = new Category[maxCategory];
+      protected int maxCategory = 100;
+      protected int maxNum;
+      protected int numExpenditure,numCategory;
+      protected Category[] categoryList = new Category[maxCategory];
    
    
        public Expenditure()
