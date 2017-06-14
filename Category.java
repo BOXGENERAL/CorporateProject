@@ -131,6 +131,37 @@ public class Category
 		return total;
 	}
 	
+	public void sortTime()
+	{
+		
+		Time temp;
+		Double temp2;
+		for(int i = numCategory;i>0;i--)
+		{
+			for(int j = 0;j<i-1;j++)
+			{
+				if(time[j].getYear() > time[j+1].getYear())
+				{
+					temp = time[j];
+					temp2 = amount[j];
+					time[j] = time[j+1];
+					amount[j] = amount[j+1];
+					time[j+1] = temp;
+					amount[j+1] = temp2;
+				}
+				else if(time[j].getYear() == time[j+1].getYear() && (time[j].getMonth() > time[j+1].getMonth()))
+				{
+					temp = time[j];
+					temp2 = amount[j];
+					time[j] = time[j+1];
+					amount[j] = amount[j+1];
+					time[j+1] = temp;
+					amount[j+1] = temp2;
+				}
+			}
+		}
+			
+	}
 	
 
 }//Category.class
