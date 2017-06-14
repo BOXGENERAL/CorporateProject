@@ -23,8 +23,7 @@ Purpose: The user needs to be able to run the program.
          java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM");
          Calendar cal = Calendar.getInstance();	
          currentTime = new Time(format.format(cal.getTime()));
-      
-         Corporate ay = new Corporate();
+         Corporate ay = new Corporate("Corporate");
          Time time = new Time("2017-06");
       //Menu Options
          int option1 = 0;
@@ -37,6 +36,7 @@ Purpose: The user needs to be able to run the program.
          double amount1= 0.00;
          String date;
          double rate;
+         int year = 0;
       //The Main Menu Screen 1-1
          do
          {
@@ -131,8 +131,7 @@ Purpose: The user needs to be able to run the program.
                      System.out.println ("--Select data to Report--");
                      System.out.println ("Option 1: Expenditure Categories");
                      System.out.println ("Option 2: Revenue Categories");
-                     System.out.println ("Option 3: Cashflow and Debt");
-                     System.out.println ("Option 4: Highest Expenditure to Lowest Expenditure");
+                     System.out.println ("Option 3: Cashflow, Interest, and Balance");
                      option2 = input.nextInt ();
                   }
                       catch (InputMismatchException ex)
@@ -144,19 +143,54 @@ Purpose: The user needs to be able to run the program.
             //Sub menu 3-1 Reports Expenditure Categories in the Run menu
                if (option2 == 1)
                {
+                  do
+                  {
+                     try
+                     {
+                        confirm3 = true;
+                        System.out.println ("What Year would you like to be reported");
+                        year = input.nextInt();
+                     }catch (InputMismatchException ex)
+                     {
+                        System.out.println ("Invalid information type");
+                        String flush = input.next();
+                        confirm3 = false;
+                     }
+                  
+                  }while (confirm3 == false);
                   System.out.println ("--Expenditure Category Report--");
-               //Insert method to update
+                  ay.printExpMonth(time);
+                  ay.printExpYear(year);
                
                }
                else if (option2 == 2)
                {
+                do
+                  {
+                     try
+                     {
+                        confirm3 = true;
+                        System.out.println ("What Year would you like to be reported");
+                        year = input.nextInt();
+                     }catch (InputMismatchException ex)
+                     {
+                        System.out.println ("Invalid information type");
+                        String flush = input.next();
+                        confirm3 = false;
+                     }
+                  
+                  }while (confirm3 == false);
                   System.out.println ("--Revenue Categories Report--");
-               //Insert method to update
+                  ay.printRevMonth (time);
+                  ay.printExpYear (year);
+             
                }
                else if (option2 == 3)
                {
-                  System.out.println ("--CashFlow and Debt Report--");
-               //Insert method to update
+                  
+                  System.out.println ("--CashFlow and Interest Report--");
+                  ay.printCashflowMonth (time);
+                  ay.printInterest (time);
                }
                //User enters Wrong data in the Sub Menu
                else
@@ -235,7 +269,7 @@ Purpose: The user needs to be able to run the program.
                      confirm2 = true;
                      System.out.println ("--Debt and CashFlow--");
                      System.out.println ("Select Option in Manage");
-                     System.out.println ("Option1 : Change the CashFlow Interest rate debt");
+                     System.out.println ("Option1 : Pay off Debt");
                      option2 = input.nextInt();
                   }//Try Method
                       catch (InputMismatchException ex)
@@ -246,24 +280,12 @@ Purpose: The user needs to be able to run the program.
                      }//Catch Method
                  
                }while (confirm2 == false);
+               //Sub Menu Paying off Debt
                if (option2 == 1)
                {
-                  do
-                  {
-                     try
-                     {
-                        confirm3 = true;
-                        System.out.println ("Input the interest rate");
-                        rate = input.nextDouble();
-                     }
-                         catch (InputMismatchException ex)
-                        {
-                           System.out.println ("Invalid Input");
-                           String flush = input.next();
-                           confirm3 = false;
-                        }
-                  }while (confirm3 == false);
-               // Insert calling methods to change Debt and the interest rate
+                  
+                  ay.payDebt();
+                  ay.saveDebt();
                
                
                }
@@ -288,3 +310,4 @@ Purpose: The user needs to be able to run the program.
          }while (exit == false); 
       }
    } // CorporateRunner class
+
