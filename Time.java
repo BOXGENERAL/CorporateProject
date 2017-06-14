@@ -40,6 +40,27 @@ public class Time
 		return month;
 	}
 	
+	public void addMonth()
+	{
+		month++;
+		if(month>12)
+		{
+			month = 1;
+			year++;
+		}
+		if(month<10)
+			time = year+"-0"+month;
+		else
+			time = year+"-"+month;
+		
+	}
+	
+	public Time copy()
+	{
+		Time t = new Time(year,month);
+		return t;
+	}
+	
 	public boolean equals(Time other)
 	{
 		if(month == other.month && year == other.year)
@@ -48,6 +69,10 @@ public class Time
 			return false;
 	}
 	
+	public int compare(Time other)
+	{
+		return year*12+month - (other.year*12+other.month);
+	}
 	public String toString()
 	{
 		return time;
