@@ -3,5 +3,4 @@ water
 electricity
 wage
 office
-production
-services
+
