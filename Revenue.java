@@ -24,7 +24,7 @@
             BufferedReader br2 = new BufferedReader(new FileReader(categoryFile));
          
             numRevenue = Integer.parseInt(br.readLine());
-            maxNum = numRevenue+100;
+            maxNum = numRevenue+1000;
             time = new Time[maxNum];
             amount = new double[maxNum];
          		
@@ -202,7 +202,15 @@
          }
       
       }
-   
+   	
+		 public void update()
+      {
+         for(int i = 0;i<numRevenue;i++)
+         {
+            amount[i] = monthTotal(time[i]);
+         }
+      }
+		
        public void sortTime()
       {
          for(int i = 0;i<numCategory;i++)

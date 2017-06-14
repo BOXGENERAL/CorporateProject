@@ -193,6 +193,7 @@
          debt.saveCategory();
          saveDebt();
          expenditure.update();
+			revenue.update();
          expenditure.sortTime();
          revenue.sortTime();
          expenditure.saveFile();
@@ -203,4 +204,3 @@
       }
    
    } // Corporate class
-

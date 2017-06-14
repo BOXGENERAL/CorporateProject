@@ -24,7 +24,7 @@
             BufferedReader br2 = new BufferedReader(new FileReader(categoryFile));
          
             numExpenditure = Integer.parseInt(br.readLine());
-            maxNum = numExpenditure+100;
+            maxNum = numExpenditure+1000;
             time = new Time[maxNum];
             amount = new double[maxNum];
          

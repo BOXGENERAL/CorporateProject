@@ -27,7 +27,7 @@ public class CashFlow
 			BufferedReader br = new BufferedReader(new FileReader(cashflowFile));
 			
 			numCashflow = Integer.parseInt(br.readLine());
-			maxNum = numCashflow+100;
+			maxNum = numCashflow+1000;
 			time = new Time[maxNum];
 			amount = new double[maxNum];
 			
@@ -101,12 +101,12 @@ public class CashFlow
 	//methods:
 	public void updateCashflow(Expenditure exp,Revenue rev)
 	{
-		int i;
+		int i,j;
 		for(i = 0;i < exp.numExpenditure;i++)
 			time[i] = exp.time[i];
-		for(int j = 0;i < rev.numRevenue;i++)
+		for(j = 0;j < rev.numRevenue;j++)
 			time[i+j] = rev.time[j];
-		numCashflow = i;
+		numCashflow = i+j;
 		
 		sortTime();
 		

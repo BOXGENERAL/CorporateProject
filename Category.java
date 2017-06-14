@@ -25,7 +25,7 @@ public class Category
 			BufferedReader br = new BufferedReader(new FileReader(f));
 			
 			numCategory = Integer.parseInt(br.readLine());
-			maxNum = numCategory+100;
+			maxNum = numCategory+1000;
 			time = new Time[maxNum];
 			amount = new double[maxNum];
 			

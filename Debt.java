@@ -24,7 +24,8 @@
    //methods:
        public double interest(double[] cash,int n)
       {
-         if(cash[n]>= 0)
+			
+         if(n == -1 || cash[n]>= 0)
             return 0;
          else
             return (cash[n]+interest(cash,n-1))*rate;
@@ -37,6 +38,7 @@
       
          for(int i = numCategory-1;i>=0;i--)
          {
+				
             time[i] = cashflow.time[i];
             amount[i] = Math.abs(Math.round((interest(cashflow.amount,i))));
          }
