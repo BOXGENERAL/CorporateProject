@@ -17,7 +17,7 @@ public class Time
 		year = Integer.parseInt(time.substring(0,4));
 		month = Integer.parseInt(time.substring(5));
 		
-	}
+	} // Time constructor
 	
 	public Time(int year,int month)
 	{
@@ -28,17 +28,17 @@ public class Time
 			time = year+"-0"+month;
 		else
 			time = year+"-"+month;
-	}
+	} // Time constructor
 	
 	public int getYear()
 	{
 		return year;
-	}
+	} // getYear accessor
 	
 	public int getMonth()
 	{
 		return month;
-	}
+	} // getMonth accessor
 	
 	public void addMonth()
 	{
@@ -53,13 +53,13 @@ public class Time
 		else
 			time = year+"-"+month;
 		
-	}
+	} // addMonth method
 	
 	public Time copy()
 	{
 		Time t = new Time(year,month);
 		return t;
-	}
+	} // copy method
 	
 	public boolean equals(Time other)
 	{
@@ -67,16 +67,16 @@ public class Time
 			return true;
 		else
 			return false;
-	}
+	} // equals method
 	
 	public int compare(Time other)
 	{
 		return year*12+month - (other.year*12+other.month);
-	}
+	} // compare method
 	public String toString()
 	{
 		return time;
-	}
+	} // toString method
 		
 
-}
+} // time class
