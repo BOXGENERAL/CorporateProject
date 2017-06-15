@@ -44,6 +44,7 @@ public class Category
 		
 	}
 	
+	//saveCategory method
 	public void saveCategory()
 	{
 		try
@@ -75,6 +76,7 @@ public class Category
 		return name;
 	}
 	
+	//setAmount mutator
 	public boolean setAmount (Time time, double money)	//Changes the amount of money in the Category
 	{
 		int n = searchTime(time);
@@ -92,7 +94,7 @@ public class Category
 		return true;
 	}
 		
-	//searcher:
+	//searchTime method
 	public int searchTime(Time time)
 	{
 		
@@ -107,7 +109,7 @@ public class Category
 	
 	//methods:
 	
-	
+	//amountMonth method
 	public double amountMonth(Time time)
 	{
 		int n = searchTime(time);
@@ -121,6 +123,7 @@ public class Category
  
 	}
 	
+	//amountYear method
 	public double amountYear(int year)
 	{
 		double total = 0;
@@ -131,6 +134,7 @@ public class Category
 		return total;
 	}
 	
+	//sortTime method
 	public void sortTime()
 	{
 		
@@ -164,4 +168,4 @@ public class Category
 	}
 	
 
-}//Category.class
+}//Category class
