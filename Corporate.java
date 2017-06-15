@@ -1,4 +1,13 @@
-import java.io.*;
+ /*
+Class name: Corporate
+Author: Daniel, Jonathan
+Date: June 5, 2017
+School: AYJackson
+Purpose: The whole database for the Corporation
+*/
+
+
+   import java.io.*;
 import java.util.*;
 
     public class Corporate
@@ -18,7 +27,7 @@ import java.util.*;
       protected static Time currentTime = new Time(format.format(cal.getTime()));
       protected Time payTime;
    
-   //Corporate constructor:
+   //constructor:
        public Corporate(String name)
       {
          corporate = new File(name+".txt");
@@ -38,15 +47,16 @@ import java.util.*;
                System.out.println("corporate load file error");
             }
       
-      } 
+      } // Constructor I
    
-   //getCurrentTime accessor:
+   //accessor:
+	//Decription: recives the parameter of time, String, and double and returns no value
+	//Purpose: Sets the Expentiture
        public Time getCurrentTime()
        {
     	   return currentTime;
        }
-   
-   //setExp mutator		    
+       
        public void setExp(String name,Time time,double amount)
       {
          if(expenditure.setExp( name, time, amount))
@@ -60,7 +70,8 @@ import java.util.*;
          }
       
       }
-   //setRev mutator
+   	//Decription: recives the parameter of time, String, and double and returns no value
+	//Purpose: Sets the Revenue
        public void setRev(String name,Time time,double amount)
       {
          if(revenue.setRev( name, time, amount))
@@ -75,7 +86,9 @@ import java.util.*;
       
       }
    
-   //printExpMonth method:
+   //method:
+	//Decription: recives the parameter of time and returns no value
+	//Purpose: Outputs a report for Expenditure within the month
        public void printExpMonth(Time time)
       {
          double total = expenditure.monthTotal(time);
@@ -91,8 +104,8 @@ import java.util.*;
          }
          System.out.println("");
       }
-   
-   //printRevMonth method		    
+   //Decription: recives the parameter of time and returns no value
+	//Purpose: Outputs a report for Revenue within the month
        public void printRevMonth(Time time)
       {
          double total = revenue.getMonth(time);
@@ -106,30 +119,30 @@ import java.util.*;
          }
          System.out.println("");
       }
-  
-   //printCashflowMonth method	    
+   //Decription:recives the parameter of time and returns no value
+	//Purpose: Outputs a report for CashFlow within the month
        public void printCashflowMonth(Time time)
       {
     	   double value = cashflow.getMonth(time);
     	   if(value != 0)
     		   System.out.println("the cash flow of "+time+" :$"+value);
       }
-   
-   //printInterest method
+   //Decription:recives the parameter of time and returns no value
+	//Purpose: Outputs a report for Interest within the month
        public void printInterest(Time time)
       {
     	   double value = debt.amountMonth(time);
     	   if(value != 0)
     		   System.out.println("the debt interest of "+time+" :$"+value);
       }
-  
-   //printBalance method	    
+   //Decription:recives not parameter and returns no value
+	//Purpose: Outputs a report for Balance within the month
        public void printBalance()
       {
          System.out.println("the current balance :$"+balance);
       }
-   
-   //printExpYear method	    
+   //Decription: recieves the paramenter of year as an int and returns not value
+	//Purpose: Outputs a report for the Expenditure within the year
        public void printExpYear(int year)
       {
          Time t;
@@ -142,8 +155,8 @@ import java.util.*;
          }
       
       }
-   
-   //printRevYear method
+   //Decription: recieves the paramenter of year as an int and returns not value
+	//Purpose: Outputs a report for the Revenue within the year
        public void printRevYear(int year)
       {
          Time t;
@@ -156,8 +169,8 @@ import java.util.*;
          }
       
       }
-   
-   //printYear method		    
+       //Decription: recieves the paramenter of year as an int and returns no value
+	//Purpose: Outputs a report for year of everything
        public void printYear(int year)
        {
           Time t;
@@ -173,8 +186,9 @@ import java.util.*;
           }
        
        }
-  
-   //addExpCategory method
+   	//Decription: recives the parameter of name as a String and returns no value
+	//Purpose: Allows user to add a new Category within Expenditure if it was successful 
+	//then it will output a success message if not then an error
        public void addExpCategory(String name)
       {
          if(expenditure.addCategory(name))
@@ -183,8 +197,9 @@ import java.util.*;
             System.out.println("add category fail.");
       
       }
-  
-   //addRevCategory method	    
+   //Decription: recives the parameter of name as a String and returns no value
+	//Purpose: Allows user to add a new Category within Revenue if it was successful 
+	//then it will output a success message if not then an error
        public void addRevCategory(String name)
       {
          if(revenue.addCategory(name))
@@ -193,8 +208,8 @@ import java.util.*;
             System.out.println("add category fail.");
       
       }
-   
-   //payDebt method	    
+   //Decription: recives no parameters and returns no value
+	//Purpose: User Pays off Debt
        public void payDebt()
       {
       
@@ -202,8 +217,8 @@ import java.util.*;
          payTime = currentTime;
       
       }
-   
-   //saveDebt method	    
+   //Decription: recieves no parameters and returns no value
+	//Purpose: saves Debt as a file
        public void saveDebt()
       {
          balance = debt.getDebt(payTime,currentTime);
@@ -223,8 +238,8 @@ import java.util.*;
                System.out.println("corporate save file error");
             }
       }
-   
-   //save method	    
+   //Decription: recives no parameter and returns no value
+	//Purpose: Saves the whole data into a txt file
        public void save()
       {
       
