@@ -224,20 +224,19 @@ public class CorporateRunner
 	{
 		Time time;
 		do
-        {
-           try
-           {
-              
-              time = new Time(sc.next());
-              return time;
-           }
-           catch (InputMismatchException ex)
-           {
-        	   System.out.println ("Invalid Input: format: \"yyyy-mm\" (example  \"2017-06\"), try again");
-               String flush = sc.next();
-               
-           }
-        }while (true);
+		{
+		   try
+		   {
+
+		      time = new Time(sc.next());
+		      return time;
+		   }
+		   catch (StringIndexOutOfBoundsException e)
+		   {
+			System.out.println ("Invalid Input: format: \"yyyy-mm\" (example  \"2017-06\"), try again");
+		   }
+		}while (true);
+
 	}
 	
 	
