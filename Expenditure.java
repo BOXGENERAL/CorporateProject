@@ -1,3 +1,13 @@
+  /*
+Class name: Expenditure
+Author: Jonathan, Henry, Donggi
+Date: June 5, 2017
+School: AYJackson
+Purpose: Manages the Expenditure 
+*/
+
+
+
    import java.util.*;
    import java.lang.*;
    import java.io.*;
@@ -15,7 +25,7 @@
       protected int numExpenditure,numCategory;
       protected Category[] categoryList = new Category[maxCategory];
    
-   
+   	//Constructor
        public Expenditure()
       {
          try
@@ -53,7 +63,8 @@
       
       
       }
-   
+   	//Decription: recieves no parameters and returns no value
+	//Purpose: Saves the expenditure file
        public void saveFile()
       {
          try
@@ -97,6 +108,8 @@
       }
    
    //accessor:
+	//Decription: recieves string, Time object, and amount and returns boolean
+	//Purpose: Sets up the Expenditure
        public boolean setExp(String name,Time time,double amount)
       {
          int n = searchCategory(name);
@@ -120,7 +133,8 @@
       
          return true;
       }
-   
+   //Decription: recieves Time Object and returns double
+	//Purpose: gets the Month from Expenditure
        public double getMonth(Time time)
       {
          int n = searchExp(time);
@@ -132,6 +146,8 @@
    
    
    //search:
+	//Decription: recieves Time Object and returns int
+	//Purpose: Searches for the specific expenditure within time object
        public int searchExp(Time time)
       {  
          for(int i = 0;i<numExpenditure;i++)
@@ -140,7 +156,8 @@
       
          return -1;
       }
-   
+   //Decription: recieves not parameters and returns year
+	//Purpose: searches for a specific Category
        public int searchCategory(String name)
       {
          for(int i = 0;i<numCategory;i++)
@@ -153,6 +170,9 @@
       }
    
    //methods:
+	
+	//Decription: recieves time object and returns double
+	//Purpose: 
        public double monthTotal(Time time)
       {
          double total = 0;
@@ -163,7 +183,8 @@
       
          return total;
       }
-   
+   //Decription: recieves time object and returns no value
+	//Purpose:Outputs the Expenditure within the Month
        public void printMonth(Time time)
       {
          for(int i = 0;i<numCategory;i++)
@@ -171,7 +192,8 @@
       
       }
    
-    
+    //Decription: recieves String and returns boolean
+	//Purpose: adds a new Category to the Class
        public boolean addCategory(String name)
       {
          if(searchCategory(name) != -1)
@@ -207,7 +229,8 @@
          }
       
       }
-   
+   //Decription: recieves no parameter and returns no value
+	//Purpose: Updates Expenditure
        public void update()
       {
          for(int i = 0;i<numExpenditure;i++)
@@ -215,7 +238,8 @@
             amount[i] = monthTotal(time[i]);
          }
       }
-   //sort
+   //Decription: recieves no parameter and returns no value
+	//Purpose: Sorts time within the Category and Expenditure
        public void sortTime()
       {
          for(int i = 0;i<numCategory;i++)
