@@ -1,14 +1,23 @@
+/*
+Class name: Time
+Author: Jonathan
+Date: June 5, 2017
+School: AYJackson
+Purpose: Manages Time within the Corporate Project
+*/
+
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
 public class Time
 {
-	private java.text.SimpleDateFormat format;
+	java.text.SimpleDateFormat format;
 	private String time;
 	private int year;
 	private int month;
-	
+	//Constructor 1
 	public Time(String time)
 	{
 		
@@ -17,8 +26,8 @@ public class Time
 		year = Integer.parseInt(time.substring(0,4));
 		month = Integer.parseInt(time.substring(5));
 		
-	} // Time constructor
-	
+	}
+	//Constructor 2
 	public Time(int year,int month)
 	{
 		this.year = year;
@@ -28,55 +37,40 @@ public class Time
 			time = year+"-0"+month;
 		else
 			time = year+"-"+month;
-	} // Time constructor
-	
+	}
+	//Decription: recieves not parameters and returns year
+	//Purpose: Returns year
 	public int getYear()
 	{
 		return year;
-	} // getYear accessor
-	
+	}
+	//Decription: recieves not parameters and returns year
+	//Purpose: Returns month
 	public int getMonth()
 	{
 		return month;
-	} // getMonth accessor
-	
-	public void addMonth()
-	{
-		month++;
-		if(month>12)
-		{
-			month = 1;
-			year++;
-		}
-		if(month<10)
-			time = year+"-0"+month;
-		else
-			time = year+"-"+month;
-		
-	} // addMonth method
-	
-	public Time copy()
-	{
-		Time t = new Time(year,month);
-		return t;
-	} // copy method
-	
+	}
+	//Decription: recieves another object time and returns boolean
+	//Purpose: returns true if the 2 time year and month are same
 	public boolean equals(Time other)
 	{
 		if(month == other.month && year == other.year)
 			return true;
 		else
 			return false;
-	} // equals method
-	
+	}
+	//Description:Recieves time as an object and returns int
+	//Purpose: compares time with other time object
 	public int compare(Time other)
 	{
 		return year*12+month - (other.year*12+other.month);
-	} // compare method
+	}
+	//Decription: recieves no parameters  and and returns string
+	//Purpose: returns string within time
 	public String toString()
 	{
 		return time;
-	} // toString method
+	}
 		
 
-} // time class
+}
