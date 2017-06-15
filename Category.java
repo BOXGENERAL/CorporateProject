@@ -1,3 +1,14 @@
+/*
+Class name: Category
+Author: Donggi, Jonathan
+Date: June 5, 2017
+School: AYJackson
+Purpose: Manages the Category
+*/
+
+
+
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -43,8 +54,8 @@ public class Category
 		
 		
 	}
-	
-	//saveCategory method
+	//Decription: recieves no parameters and returns no value
+	//Purpose: Saves the Category
 	public void saveCategory()
 	{
 		try
@@ -71,12 +82,14 @@ public class Category
 	}
 	
 	//accessor:
+	//Decription: recieves no parameters and returns no String
+	//Purpose: Gives the name of the Category
 	public String getName()
 	{
 		return name;
 	}
-	
-	//setAmount mutator
+	//Decription: recieves time object and double and returns a boolean
+	//Purpose: sets the cost of the Category List
 	public boolean setAmount (Time time, double money)	//Changes the amount of money in the Category
 	{
 		int n = searchTime(time);
@@ -94,7 +107,9 @@ public class Category
 		return true;
 	}
 		
-	//searchTime method
+	//searcher:
+	//Decription: recieves time object and returns int
+	//Purpose: searches time within the Category
 	public int searchTime(Time time)
 	{
 		
@@ -109,7 +124,8 @@ public class Category
 	
 	//methods:
 	
-	//amountMonth method
+	//Decription: recieves Time object and returns double
+	//Purpose: gives off the amount on the month
 	public double amountMonth(Time time)
 	{
 		int n = searchTime(time);
@@ -122,8 +138,8 @@ public class Category
 		}
  
 	}
-	
-	//amountYear method
+	//Decription: recieves int and returns double
+	//Purpose: returns the amount in an year
 	public double amountYear(int year)
 	{
 		double total = 0;
@@ -133,8 +149,8 @@ public class Category
 				
 		return total;
 	}
-	
-	//sortTime method
+	//Decription: recieves no parameters and returns no value
+	//Purpose: sorts the time within Category
 	public void sortTime()
 	{
 		
@@ -168,4 +184,4 @@ public class Category
 	}
 	
 
-}//Category class
+}//Category.class
