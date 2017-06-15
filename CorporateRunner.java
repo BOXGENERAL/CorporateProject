@@ -1,12 +1,23 @@
+/*
+Class name: CorporateRunner
+Author: Donggi Lee
+Date: June 7, 2017
+School: AYJackson
+Purpose: Opens up the whole main menu for the user to use
+
+*/
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
 
 public class CorporateRunner 
 {
+	//Fields
 	static Scanner sc = new Scanner(System.in);
 	static Corporate ay = new Corporate("ayjackson");
-	
+	//Description: Recieves no parameters and returns no value
+	//Purpose: This displays the main menu for the whole corporate class
 	public static void mainMenu()
 	{
 		System.out.println ("--------------Menu-------------");
@@ -17,7 +28,8 @@ public class CorporateRunner
         System.out.println ("Option 5: save all changed Input 5");
         System.out.println ("Option 6: Exit the program Input 6");
 	}
-	
+	//Description: Recieves no parameters and returns no value
+	//Purpose: This is to see what the user wants to specifically report
 	public static void option1()
 	{
 		int option;
@@ -56,7 +68,8 @@ public class CorporateRunner
 	        
 		}while(option != 0);
 	}
-	
+	//Description: Recieves no parameters and returns no value
+	//Purpose: Allows the user to modify and add Category within the Expenditure 
 	public static void option2()
 	{
 		String name;
@@ -112,7 +125,8 @@ public class CorporateRunner
 	        
 		}while(option != 0);
 	}
-	
+	//Description: Recieves no parameters and returns no value
+	//Purpose: Allows the user to modify and add Category within the Revenue in the Sub Menu
 	public static void option3()
 	{
 		String name;
@@ -168,7 +182,8 @@ public class CorporateRunner
 	        
 		}while(option != 0);
 	}
-	
+	//Description: Recieves no parameters and returns no value 
+	//Purpose: Sub Menu for the cashFlow and Debt. Allows the user to pay off Debt
 	public static void option4()
 	{
 		String name;
@@ -219,27 +234,30 @@ public class CorporateRunner
 		}while(option != 0);
 	}
 	
-	//get user input:
+	//Description: Recieves no parameters and returns no value
+	//Purpose: To convert time to get in a usable format
 	public static Time getTime()
 	{
 		Time time;
 		do
-		{
-		   try
-		   {
-
-		      time = new Time(sc.next());
-		      return time;
-		   }
-		   catch (StringIndexOutOfBoundsException e)
-		   {
-			System.out.println ("Invalid Input: format: \"yyyy-mm\" (example  \"2017-06\"), try again");
-		   }
-		}while (true);
-
+        {
+           try
+           {
+              
+              time = new Time(sc.next());
+              return time;
+           }
+           catch (InputMismatchException ex)
+           {
+        	   System.out.println ("Invalid Input: format: \"yyyy-mm\" (example  \"2017-06\"), try again");
+               String flush = sc.next();
+               
+           }
+        }while (true);
 	}
 	
-	
+	//Description:Recieves no parameters and returns and int
+	//Purpose: allows the user to input int
 	public static int getInt()
 	{
 		int num;
@@ -260,6 +278,8 @@ public class CorporateRunner
            }
         }while (true);
 	}
+	//Description:Recieves no parameters and returns double
+	//Purpose: allows the user to input double
 	
 	public static double getDouble()
 	{
@@ -281,7 +301,9 @@ public class CorporateRunner
            }
         }while (true);
 	}
-
+	//Description:Recieves no parameters and returns no value
+	//Purpose: Runs the program
+	
 	public static void main(String[] args)
 	{
 		
