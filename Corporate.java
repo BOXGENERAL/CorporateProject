@@ -1,4 +1,4 @@
-   import java.io.*;
+import java.io.*;
 import java.util.*;
 
     public class Corporate
@@ -18,7 +18,7 @@ import java.util.*;
       protected static Time currentTime = new Time(format.format(cal.getTime()));
       protected Time payTime;
    
-   //constructor:
+   //Corporate constructor:
        public Corporate(String name)
       {
          corporate = new File(name+".txt");
@@ -38,14 +38,15 @@ import java.util.*;
                System.out.println("corporate load file error");
             }
       
-      } // Constructor I
+      } 
    
-   //accessor:
+   //getCurrentTime accessor:
        public Time getCurrentTime()
        {
     	   return currentTime;
        }
-       
+   
+   //setExp mutator		    
        public void setExp(String name,Time time,double amount)
       {
          if(expenditure.setExp( name, time, amount))
@@ -59,7 +60,7 @@ import java.util.*;
          }
       
       }
-   
+   //setRev mutator
        public void setRev(String name,Time time,double amount)
       {
          if(revenue.setRev( name, time, amount))
@@ -74,7 +75,7 @@ import java.util.*;
       
       }
    
-   //method:
+   //printExpMonth method:
        public void printExpMonth(Time time)
       {
          double total = expenditure.monthTotal(time);
@@ -91,6 +92,7 @@ import java.util.*;
          System.out.println("");
       }
    
+   //printRevMonth method		    
        public void printRevMonth(Time time)
       {
          double total = revenue.getMonth(time);
@@ -104,7 +106,8 @@ import java.util.*;
          }
          System.out.println("");
       }
-   
+  
+   //printCashflowMonth method	    
        public void printCashflowMonth(Time time)
       {
     	   double value = cashflow.getMonth(time);
@@ -112,18 +115,21 @@ import java.util.*;
     		   System.out.println("the cash flow of "+time+" :$"+value);
       }
    
+   //printInterest method
        public void printInterest(Time time)
       {
     	   double value = debt.amountMonth(time);
     	   if(value != 0)
     		   System.out.println("the debt interest of "+time+" :$"+value);
       }
-   
+  
+   //printBalance method	    
        public void printBalance()
       {
          System.out.println("the current balance :$"+balance);
       }
    
+   //printExpYear method	    
        public void printExpYear(int year)
       {
          Time t;
@@ -137,6 +143,7 @@ import java.util.*;
       
       }
    
+   //printRevYear method
        public void printRevYear(int year)
       {
          Time t;
@@ -149,7 +156,8 @@ import java.util.*;
          }
       
       }
-       
+   
+   //printYear method		    
        public void printYear(int year)
        {
           Time t;
@@ -165,7 +173,8 @@ import java.util.*;
           }
        
        }
-   	
+  
+   //addExpCategory method
        public void addExpCategory(String name)
       {
          if(expenditure.addCategory(name))
@@ -174,7 +183,8 @@ import java.util.*;
             System.out.println("add category fail.");
       
       }
-   
+  
+   //addRevCategory method	    
        public void addRevCategory(String name)
       {
          if(revenue.addCategory(name))
@@ -184,6 +194,7 @@ import java.util.*;
       
       }
    
+   //payDebt method	    
        public void payDebt()
       {
       
@@ -192,6 +203,7 @@ import java.util.*;
       
       }
    
+   //saveDebt method	    
        public void saveDebt()
       {
          balance = debt.getDebt(payTime,currentTime);
@@ -212,6 +224,7 @@ import java.util.*;
             }
       }
    
+   //save method	    
        public void save()
       {
       
