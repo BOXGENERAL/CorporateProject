@@ -46,6 +46,7 @@ public class CashFlow
 		
 	}
 	
+	//saveCashflow method
 	public void saveCashflow()
 	{
 		try
@@ -117,6 +118,7 @@ public class CashFlow
 		}
 	}
 	
+	//sortTime method
 	public void sortTime()
 	{
 		
