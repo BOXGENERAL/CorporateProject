@@ -1,3 +1,12 @@
+  /*
+Class name: Revenue
+Author: Donggi, Jonathan
+Date: June 5, 2017
+School: AYJackson
+Purpose: Manages the Revenue
+*/
+
+
    import java.util.*;
    import java.lang.*;
    import java.io.*;
@@ -15,7 +24,7 @@
       protected int numRevenue,numCategory;
       protected Category[] categoryList = new Category[maxCategory];
    
-   
+   	//Constructor
        public Revenue()
       {
          try
@@ -52,7 +61,8 @@
       				
       
       }
-   
+   //Decription: recieves no parameters and returns no value
+	//Purpose: Saves the Revenue file
        public void saveFile()
       {
          try
@@ -94,6 +104,8 @@
       }
    
    //accessor:
+	//Decription: recieves string, Time object, and amount and returns boolean
+	//Purpose: Sets up the Revenue
        public boolean setRev(String name,Time time,double amount)
       {
          int n = searchCategory(name);
@@ -117,7 +129,8 @@
       
          return true;
       }
-   
+   //Decription: recieves Time Object and returns double
+	//Purpose: gets the Month from Expenditure
        public double getMonth(Time time)
       {
          int n = searchRev(time);
@@ -128,6 +141,8 @@
       }
    
    //search:
+	//Decription: recieves Time Object and returns int
+	//Purpose: Searches for the specific expenditure within time object
        public int searchRev(Time time)
       {		
          for(int i = 0;i<numRevenue;i++)
@@ -136,7 +151,8 @@
       	
          return -1;
       }
-   
+    //Decription: recieves not parameters and returns year
+	//Purpose: searches for a specific Category
        public int searchCategory(String name)
       {
          for(int i = 0;i<numCategory;i++)
@@ -149,6 +165,8 @@
       }
    
    //methods:
+   //Decription: recieves time object and returns double
+	//Purpose: calculate the toal months in Category
        public double monthTotal(Time time)
       {
          double total = 0;
@@ -158,7 +176,8 @@
       	
          return total;
       }
-   
+   //Decription: recieves time object and returns no value
+	//Purpose:Outputs the Revenue within the Month
        public void printMonth(Time time)
       {
          for(int i = 0;i<numCategory;i++)
@@ -166,7 +185,8 @@
       
       }
    
-   			
+   	//Decription: recieves String and returns boolean
+	//Purpose: adds a new Category to the Class		
        public boolean addCategory(String name)
       {
          if(searchCategory(name) != -1)
@@ -202,7 +222,8 @@
          }
       
       }
-   	
+   	//Decription: recieves no parameter and returns no value
+	//Purpose: Updates Revenue
 		 public void update()
       {
          for(int i = 0;i<numRevenue;i++)
@@ -210,7 +231,8 @@
             amount[i] = monthTotal(time[i]);
          }
       }
-		
+		 //Decription: recieves no parameter and returns no value
+	//Purpose: Sorts time within the Category and Revenue
        public void sortTime()
       {
          for(int i = 0;i<numCategory;i++)
