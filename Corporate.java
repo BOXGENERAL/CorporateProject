@@ -1,5 +1,5 @@
    import java.io.*;
-   import java.util.*;
+import java.util.*;
 
     public class Corporate
    {
@@ -41,6 +41,11 @@
       } // Constructor I
    
    //accessor:
+       public Time getCurrentTime()
+       {
+    	   return currentTime;
+       }
+       
        public void setExp(String name,Time time,double amount)
       {
          if(expenditure.setExp( name, time, amount))
@@ -102,12 +107,16 @@
    
        public void printCashflowMonth(Time time)
       {
-         System.out.println("the cash flow of "+time+" :$"+cashflow.getMonth(time));
+    	   double value = cashflow.getMonth(time);
+    	   if(value != 0)
+    		   System.out.println("the cash flow of "+time+" :$"+value);
       }
    
        public void printInterest(Time time)
       {
-         System.out.println("the debt interest of "+time+" :$"+debt.amountMonth(time));
+    	   double value = debt.amountMonth(time);
+    	   if(value != 0)
+    		   System.out.println("the debt interest of "+time+" :$"+value);
       }
    
        public void printBalance()
@@ -122,6 +131,7 @@
          for(int i = 0;i<12;i++)
          {
             t = new Time(year,i+1);
+            System.out.println ("----------------------------------------");
             printExpMonth(t);
          }
       
@@ -134,10 +144,27 @@
          for(int i = 0;i<12;i++)
          {
             t = new Time(year,i+1);
+            System.out.println ("----------------------------------------");
             printRevMonth(t);
          }
       
       }
+       
+       public void printYear(int year)
+       {
+          Time t;
+          System.out.println("the yearly report of "+year+" :");
+          for(int i = 0;i<12;i++)
+          {
+             t = new Time(year,i+1);
+             System.out.println ("----------------------------------------");
+             printExpMonth(t);
+             printRevMonth(t);
+             printCashflowMonth(t);
+             printInterest(t);
+          }
+       
+       }
    	
        public void addExpCategory(String name)
       {
