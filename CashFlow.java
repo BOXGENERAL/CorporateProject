@@ -1,3 +1,15 @@
+/*
+Class name: CashFlow
+Author: Ron, Henry, Jonathan
+Date: June 5, 2017
+School: AYJackson
+Purpose: Organizes the revenue, expenditure and debt 
+*/
+
+
+
+
+
 import java.util.*;
 import java.lang.*;
 import java.io.*;
@@ -5,15 +17,15 @@ import java.io.*;
 public class CashFlow
 {
 	//file:
-	protected File cashflowFile;
+	File cashflowFile;
 	
 	//fields:
-	protected int maxNum;
-	protected int numCashflow;
-	protected Time[] time;
+	int maxNum;
+	int numCashflow;
+	Time[] time;
 	protected double[] amount;
-	protected Expenditure expenditure;
-	protected Revenue revenue;
+	Expenditure expenditure;
+	Revenue revenue;
 	
 	
 	//Constructor Method
@@ -27,7 +39,7 @@ public class CashFlow
 			BufferedReader br = new BufferedReader(new FileReader(cashflowFile));
 			
 			numCashflow = Integer.parseInt(br.readLine());
-			maxNum = numCashflow+1000;
+			maxNum = numCashflow+100;
 			time = new Time[maxNum];
 			amount = new double[maxNum];
 			
@@ -45,8 +57,8 @@ public class CashFlow
 		
 		
 	}
-	
-	//saveCashflow method
+	//Decription: recives not parameters and returns no value
+	//Purpose: Saves the Cashflow in a text file
 	public void saveCashflow()
 	{
 		try
@@ -73,6 +85,8 @@ public class CashFlow
 	}
 	
 	//accessor:
+	//Decription: recives time parameter and returns double 
+	//Purpose: returns the value of the amount of CashFlow within the month
 	public double getMonth(Time time)
 	{
 		int n = searchTime(time);
@@ -87,6 +101,8 @@ public class CashFlow
 
 		
 	//searcher:
+	//Decription: Recieves parameter time and returns an int
+	//Purpose: Searches for the CashFlow within time
 	public int searchTime(Time time)
 	{
 		
@@ -100,14 +116,16 @@ public class CashFlow
 	}
 	
 	//methods:
+	//Decription: recieves parameters of Expenditure and Revenue and returns no value
+	//Purpose: Updates the value of CashFlow within its expenditure and Revenue
 	public void updateCashflow(Expenditure exp,Revenue rev)
 	{
-		int i,j;
+		int i;
 		for(i = 0;i < exp.numExpenditure;i++)
 			time[i] = exp.time[i];
-		for(j = 0;j < rev.numRevenue;j++)
+		for(int j = 0;i < rev.numRevenue;i++)
 			time[i+j] = rev.time[j];
-		numCashflow = i+j;
+		numCashflow = i;
 		
 		sortTime();
 		
@@ -117,8 +135,8 @@ public class CashFlow
 			amount[i] = amount[i-1] + rev.getMonth(time[i])-exp.getMonth(time[i]);
 		}
 	}
-	
-	//sortTime method
+	//Decription: Recieves no parameters and returns no value
+	//Purpose: sorts Time within its order 
 	public void sortTime()
 	{
 		
