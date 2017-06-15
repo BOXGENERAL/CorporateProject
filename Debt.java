@@ -1,3 +1,12 @@
+/*
+Class name: Debt
+Author: Jonathan, Ron, Henry
+Date: June 5, 2017
+School: AYJackson
+Purpose: Manages Debt as an inheritence
+*/
+ 
+ 
    import java.util.*;
    import java.lang.*;
    import java.io.*;
@@ -23,6 +32,8 @@
       }
    
    //methods:
+	//Decription: recieves double as an array and int and returns double
+  //Purpose: Calculates the Compound Interest using recursion Form
        public double interest(double[] cash,int n)
       {
 			
@@ -31,7 +42,8 @@
          else
             return (cash[n]+interest(cash,n-1))*rate;
       }
-   
+   //Decription: recieves no parameters and returns no value
+  //Purpose: Updates the Debt
        public void updateDebt()
       {
       
@@ -45,7 +57,8 @@
          }
       
       }
-   
+   //Decription: recieves time object and another time object and returns double
+  //Purpose: returns the debt
        public double getDebt(Time start,Time end)
       {
          Time t = start.copy();
