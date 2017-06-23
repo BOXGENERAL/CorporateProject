@@ -1,7 +1,15 @@
-public class Debt {
+/*
+Author: Henry
+Class:ICS4U
+Purpose: The process of Debt within Cashflow
+*/
+
+
+public class Debt extends CashFlow
+ {
   private double interest, amountInterest, debtAmount, debtMonthlyPay;
   private int payYear, payMonth;
-  
+  //Constructor
   public Debt(double debt, double interest1, int year, int month) {
     interest = interest1;
     debtAmount = debt;
@@ -9,7 +17,7 @@ public class Debt {
     amountInterest = this.setAmountInterest();
     debtMonthlyPay = this.calculateMonthlyPayment();
   }
-  
+  //Calculates the compound Interest using Recursion 
   private double calculateCompoundInterest(double interest, int time)
       {
          if (time == 1)
@@ -21,32 +29,30 @@ public class Debt {
 			   return (1+interest) * calculateCompoundInterest (interest, time-1);
 		   }
       }
-      
+      //Sets the Interest
       public double setAmountInterest()
       {
-         amountInterest = debtAmount + this.calculateCompoundInterest(interest, this.calMonth());
+         amountInterest = debtAmount + CashFlow.calculateCompoundInterest(interest, this.calMonth());
 			return amountInterest;
       }
-      
+      //Calculates the Month Debt Payment
       private int calMonth()
       {
-         int currentyear = Corporate.getTodayYear();
-   	   int currentmonth = Corporate.getTodayMonth();
-   	   int totalmonth;
-   	   int totalyear;
-   	   currentyear = currentyear + 1;
-   	   totalyear = payYear - currentyear;
-   	   totalmonth = ((totalyear*12) + (13 - currentmonth) + payMonth);
-         return totalmonth;
+         int currentyear = Corperation.getTodayYear();
+   	 int currentmonth = Corperation.getTodayMonth();
+   	 int totalmonth;
+   	 int totalyear;
+   	 currentyear = currentyear + 1;
+   	 totalyear = debtPayYear - currentyear;
+   	 totalmonth = ((totalyear*12) + (13 - currentmonth) + debtPayMonth);
       }
-   
+      //Calculates the Monthly Payment
        public double calculateMonthlyPayment()
       {
-         int totalMonth = this.calMonth();
-	      double monthlyPayment = Math.pow((debtAmount*(1+interest/totalMonth)), interest*totalMonth);
-	      Department[0].addCategory("debt" + CashFlow.getNumDebt(), 0, monthlyPayment);
+	double monthlyPayment = Math.pow((cash*(1+interest/MONTH)), interest*MONTH);
+	Department[0].addCategory("debt" + numDebt, 0, monthlyPayment);
       }
-      
+      //Returns Monthly Payment
       public double getDebtMonthlyPayment() {
       	return debtMonthlyPay;
       }
