@@ -1,82 +1,85 @@
+/*
+Author: Henry, Ron
+Class:ICS4U
+Purpose: The database for and Calculation Process of the Corporation's CashFlow
+*/
+
+
 public class CashFlow 
    {
       private double profit, predictingProfit, cash, totalDebt;
       private Debt debtList[] = new Debt [50];
       private int numDebt;
-      
-      public CashFlow(double money)
-      {
+      //Constructor
+       public CashFlow(double money)
+       {
          cash = money;
          profit = 0;
          totalDebt = 0;
 			 numDebt = 0;
          predictingProfit = 0;
+       }
+       //Sets a debt using the debt class
+       public void setDebt(double amo, double inte, int year, int month) {
+       		try{
+			debtList[numDebt] = new Debt(amo, inte, year, month);
+			numDebt++;
+			Department Debt = Corporate.searchDepartment("Debt");//no corporate object
+			Debt.addCategory("debt1", 0, debtList[numDebt].getDebtMonthlyPayment());
+		} catch(ArrayIndexOutOfBoundsException ex)
+		{
+			System.out.println ("Debt too full");
+		}
+       }
+       //Sets Profit from the Cashflow
+       public void setProfit ()
+      {
+         profit = CashFlow.calculateProfit();
       }
-       
-      public void setDebt(double amo, double inte, int year, int month) {
-         try{
-		debtList[numDebt] = new Debt(amo, inte, year, month);
-		numDebt++;
-		Department Debt = Corporate.searchDepartment("Debt");
-		Debt.addCategory("debt1", 0, debtList[numDebt].getDebtMonthlyPayment());
-	} catch(ArrayIndexOutOfBoundsException ex)
-	{
-		System.out.println ("Debt too full");
-	}
-      }
-       
-   public void setProfit ()
-   {
-      profit = this.calculateProfit();
-   }
-   
+      //Returns Profit
        public double getProfit ()
       {
          return profit;
       }
-      
+      //Returns Cash
       public double getCash() {
       	return cash;
       }
-      
+      //Changes Cash
       public void changeCash() {
       	cash = cash + profit;
       }
-      
+      //Predicts the Cash
       public boolean checkCash() {
-      	if (cash + predictingProfit * 3 <= 0)
-		      return false;
+      	if (cash + predicting * 3 <= 0)
+		return false;
         else 
-		      return true;
+		return true;
       }
-      
+      //Predicts the profit and sets the value
       public void setPredictingProfit()
       {
-         predictingProfit = this.calculatePredictingProfit();
+         predictingProfit = CashFlow.calculatePredictingProfit();
       }
-      
+      //Return Predicted Profit
       public double getPredictingProfit()
       {
          return predictingProfit;
       }
-      
-   public double calculateProfit()
-   {
-      return Revenue.getAmount() - Corperate.getTotalExp();
-   }
-   
-   public double calcultePredictingProfit()
-   {
-      return Revenue.getAmount() - Corperate.getTotalBud();
-   }
-       
-   public int getNumDebt() {
-      return numDebt;
-   }
-       
-   public String toString()
-   {
-      String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt;
-	   return c;
-   }
+      //Calculates Profit
+       public double calculateProfit()
+      {
+         return Revenue.getAmount() - Corperate.getTotalExp();
+      }
+      //Calculates Predicting Profit
+      public double calcultePredictingProfit()
+      {
+         return Revenue.getAmount() - Corperate.getTotalBud();
+      }
+       //The report of the CashFlow
+       public String toString()
+      {
+         String c = "Cash amount: $" + cash + "\nProfit: $" + profit + "\nPrediting Profit: $" + predictingProfit + "\nDebt: $" + totalDebt;
+	 return c;
+      }
 }
