@@ -1,69 +1,93 @@
-import java.io.*
+/*
+Author: Daniel, Henry
+Class:ICS4U
+Purpose: The whole database of the Corporation 
+*/
+
+
+
+
+
+import java.io.*;
 import java.util.Scanner;
 
-class Corporate
+public class Corporate
 {
-	protected int numDepartment, numBudgetFile, numExpenditureFile, todayYear, todayMonth;
+	protected int numDepartment, numBudgetFile, numExpenditureFile, todayYear, todayMonth, numRevenue;
 	protected double totalExp, totalBud;
 	protected String name, line, fileName = "corporate.txt";
 	protected Department[] departmentList = new Department[50];
-	protected Project[] projectList = new Project();
-	protected Revenue[] revenueList = new Revenue();
+   protected Department [] expenditureList = new Expenditure [50];
+   protected Department [] budgetList = new Budget [50];
+	protected Project[] projectList = new Project[50];
+	protected Revenue[] revenueList = new Revenue[50];
+   
 	Scanner sc = new Scanner(System.in);
-	
+	//Description: Initiazlises the 
 	public Corporate()
 	{
 		numDepartment = 0;
 		numBudgetFile = 0;
-		numExpenditure = 0;
+		numExpenditureFile = 0;
 		todayYear = 0;
 		todayMonth = 0;
 		totalExp = 0;
 		totalBud = 0;
       projectList = new Project[50];
       revenueList = new Revenue[50];	 		
-	} // Constructor I
-	
+	} 
+	//Description:
+   //Purpose:
+   //Description: recieves an int and returns no value
+   //Purpose: the user enters the Month and method sets the date
 	public void setTodayMonth(int todayMonth)
 	{
-		this.todayMonth = other.todayMonth;		
-	} // setTodayMonth mutator
-	
+		this.todayMonth = todayMonth;		
+	} 
+	//Description: Recieves no value and returns int
+   //Purpose: Returns the month for use
 	public int getTodayMonth()
 	{
 		return todayMonth;
-	} // getTodayMonth accessor
-	
+	} 
+	//Description: recieves an int and returns no value
+   //Purpose: the user enters the Year and method sets the date
 	public void setTodayYear(int todayYear)
 	{
-		this.todayYear = other.todayYear;
-	} // setTodayYear mutator
-	
+		this.todayYear = todayYear;
+	} 
+	//Description: Recieves no value and returns int
+   //Purpose: Returns the year for use
 	public int getTodayYear()
 	{
 		return todayYear;
 	} // getTodayYear accessor
-	
+	//Description: recieves a double and returns no value
+   //Purpose: It sets the total Expenditure
 	public void setTotalExp(double totalExp)
 	{
-		this.totalExp = other.totalExp;
-	} // setTotalExp mutator
-	
+		this.totalExp = totalExp;
+	}
+	//Description: Recieves no value and returns double
+   //Purpose: Returns the expenditure
 	public double getTotalExp()
 	{
 		return totalExp;
 	} // getTotalExp accessor
-	
+	//Description: recieves a double and returns no value
+   //Purpose: It sets the total Budget
 	public void setTotalBud(double totalBud)
 	{
-		this.totalBud = other.totalBud;
+		this.totalBud = totalBud;
 	} // setTotalBud mutator
-	
+	//Description: Recieves no value and returns double
+   //Purpose: Returns the budget
 	public double getTotalBud()
 	{
 		return totalBud;
-	} // getTotalBud accessor
-	
+	} 
+	//Description: Recieves no value and returns no value
+   //Purpose: Sets up a new Department. If the department list is full then it returns an error messsage
 	public void newDepartment()
 	{		
 		System.out.println("What is the name of the new department?");
@@ -75,8 +99,8 @@ class Corporate
 			{
 				if (departmentList[i] == null)
 				{
-					departmentList[i] = new Department(name, todayYear, todayMonth);
-				
+					expenditureList[i] = new Expenditure(name, todayYear, todayMonth);
+				   budgetList [i] = new Budget (name, todayYear, todayMonth);
 					numDepartment++;
 					i = 50;
 				}
@@ -85,45 +109,67 @@ class Corporate
 		{
 			System.out.println("DepartmentList already full!");
 		}			
-	} // newDepartment method
-	
-	public void showExpenditure()
+	} 
+   //Description: Recieves int value and returns none
+   //Purpose: Shows Expenditure from the selected section
+	public void showExpenditure(int section)
 	{
-		Expenditure.toString();
+		System.out.println (departmentList [section].stringExpenditure());
 	} // showExpenditure method
-	
-	public void showRevenue()
+	//Description: Recieves int value and returns none
+   //Purpose: Shows Revenue from the selected section
+	public void showRevenue(int section)
 	{
-		Revenue.toString();
+		System.out.println (revenueList[section].toString());
 	} // showRevenue method
-	
-	public void showBudget()
+	//Description: Recieves int value and returns none
+   //Purpose: Shows Budget from the selected section
+	public void showBudget(int section)
 	{
-		Budget.toString();
+		System.out.println (departmentList[section].stringBudget());
 	} // showBudget method
-	
+	//Description: Recieves 2 int values and a double and returns double
+   //Purpose: Adds a new Revenue Base on year month and amount
 	public void addRevenue(int year, int month, double amount)
 	{
-		Revenue(year, month, amount);
+		
+      try
+		{
+			for (int i = 0; i < 50; i++)
+			{
+				if (revenueList[i] == null)
+				{
+					revenueList[i] = new Revenue(year, month, amount);
+				
+					numRevenue++;
+					i = 50;
+				}
+			}
+		} catch (ArrayIndexOutOfBoundsException ex)
+		{
+			System.out.println("RevenueList already full!");
+		}		
 	} // addRevenue method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: reports the Budget from the Budget class by sorting 
 	public void budgetReport()
 	{
-		double j, temp;
+      int j;
+		double temp;
 		String temp2;
 		double[] budgetRank = new double[50];
 		String[] departmentRank = new String[50];
 		
-		budgetRank[0] = (Department[0].Budget).getTotal();
-		departmentRank[0] = Department[0].name;
+		budgetRank[0] = departmentList[0].giveBudget();
+		departmentRank[0] = departmentList[0].name;
 		
-		for (int i = 1; i < 50 && (Department[i].Budget).getTotal() != null; i++)
+		for (int i = 1; i < 50 && departmentList[i] != null; i++)
 		{
-			budgetRank[i] = (Department[i].Budget).getTotal();
-			departmentRank[i] = Department[i].name;
+			budgetRank[i] = departmentList[i].giveBudget();
+			departmentRank[i] = departmentList[i].name;
 		}
 		
-		for (int i = 0; i < 50 && budgetRank[i] != null; i++)
+		for (int i = 0; i < 50 && Double.isNaN(budgetRank[i])== true; i++)
 		{
 			j = i;
 			temp = budgetRank[i];
@@ -142,14 +188,14 @@ class Corporate
 		
 		try
 		{
-			BufferedWriter in = new BufferedWriter(new FileWriter("budgetReport.txt", true));
+			BufferedWriter out = new BufferedWriter(new FileWriter("budgetReport.txt", true));
 			
 			while (line != null)
 			{
 				out.write("Budget for Every Department Ranked from Highest to Lowest");
 				out.newLine();
 				
-				for (int i = 0; i < 50 && budgetRank[i] != null; i++)
+				for (int i = 0; i < 50 && Double.isNaN(budgetRank[i])== true; i++)
 				{
 					out.write("" + departmentRank[i] + ": " + budgetRank[i]);
 					out.newLine();
@@ -162,24 +208,26 @@ class Corporate
 			System.out.println("Problem accessing file \"budgetReport.txt\"");
 		}
 	} // budgetReport method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: reports the Budget from the Budget class 
 	public void expenditureReport()
 	{
-		double j, temp;
+      int j;
+		double  temp;
 		String temp2;
 		double[] expenditureRank = new double[50];
 		String[] departmentRank = new String[50];
 		
-		expenditureRank[0] = (Department[0].Expenditure).getTotal();
-		departmentRank[0] = Department[0].name;
+		expenditureRank[0] = departmentList[0].giveExpenditure();
+		departmentRank[0] = departmentList[0].name;
 		
-		for (int i = 1; i < 50 && (Department[i].Expenditure).getTotal() != null; i++)
+		for (int i = 1; i < 50 && departmentList[0] != null; i++)
 		{
-			expenditureRank[i] = (Department[i].Expenditure).getTotal();
-			departmentRank[i] = Department[i].name;
+			expenditureRank[i] = departmentList[i].giveExpenditure();
+			departmentRank[i] = departmentList[i].name;
 		}
 		
-		for (int i = 0; i < 50 && expenditureRank[i] != null; i++)
+		for (int i = 0; i < 50 && Double.isNaN(expenditureRank[i])== true; i++)
 		{
 			j = i;
 			temp = expenditureRank[i];
@@ -198,14 +246,14 @@ class Corporate
 		
 		try
 		{
-			BufferedWriter in = new BufferedWriter(new FileWriter("expenditureReport.txt", true));
+			BufferedWriter out = new BufferedWriter(new FileWriter("expenditureReport.txt", true));
 			
 			while (line != null)
 			{
 				out.write("Expenditure for Every Department Ranked from Highest to Lowest");
 				out.newLine();
 				
-				for (int i = 0; i < 50 && expenditureRank[i] != null; i++)
+				for (int i = 0; i < 50 && Double.isNaN(expenditureRank[i])== true; i++)
 				{
 					out.write("" + departmentRank[i] + ": " + expenditureRank[i]);
 					out.newLine();
@@ -218,63 +266,76 @@ class Corporate
 			System.out.println("Problem accessing file \"expenditureReport.txt\"");
 		}
 	} // expenditureReport method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: Calculates the total Expenditure
 	public void calTotalExp()
 	{		
-		for (int i = 0; i < 50 && Department[i] != null; i++)
+		for (int i = 0; i < 50 && departmentList[i] != null; i++)
 		{
-			totalExp = totalExp + (Department[i].Expenditure).getTotal();
+			totalExp = totalExp + departmentList[i].giveExpenditure();
 		}
 	} // calTotalExp method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: Calculates the total Budget
 	public void calTotalBud()
 	{		
-		for (int i = 0; i < 50 && Department[i] != null; i++)
+		for (int i = 0; i < 50 && departmentList[i] != null; i++)
 		{
-			totalBud = totalBud + (Department[i].Budget).getTotal();
+			totalBud = totalBud + departmentList[i].giveBudget();
 		}
 	} // calTotalBud method
-	
-	public double searchCategory(String category, boolean search)
+	//Description: Recieves a Object and returns double
+   //Purpose: searches for a specific category and returns its amount
+	public double searchCategory(String category)
    {
-      for (int i = 0; i < 50 && categoriesList[i] != null; i++)
-      {
-         if (categoriesList[i].name == category)
-         {
-            search = true;
-            return categoriesList[i].getAmount();
-         }
-      }
+        
+   
    } // searchCategory method
-	
-   public Department searchDepartment(String department)
+   //Description: Recieves an int and returns none
+   //Purpose: Shows the category information based on its section
+	public void showCategory (int section)
+   {
+      
+   
+   
+   }
+   
+   //Description: Recieves a Object and returns double
+   //Purpose: searches for a specific department and returns its section
+   public int searchDepartment(String department)
    {
       for (int i = 0; i < 50 && departmentList[i] != null; i++)
       {
-         if (departmentList[i].name == department)
+         if (department.equals(departmentList[i].name))
          {
-            return departmentList[i];
+         return i;
          }
+      
+      
       }
+      return 51;
    } // searchDepartment method
+   //Description: Recieves 2 Strings, boolean, double and returns boolean
+   //Purpose: Changes the properties of the Category based on the information givem
    
 	public boolean changeCategory(String department, boolean option, String category, double num)
    {
    	if (option == true)
 		{
-			((Department[department].Expenditue).Category[category]).amount = num;
+			((departmentList[searchDepartment(department)].Expenditure).Category[searchCategory]).amount = num;
 		}
 		else if (option == false)
 		{
-			((Department[department].Budget).Category[category]).amount = num;
+			((departmentList[searchDepartment(department)].Budget).Category[category]).amount = num;
 		}
    } // changeCategory method 
-	
+	//Description: Recieves no value and returns none
+   //Purpose: Creates a File for Budget
 	public void createBudgetFile()
 	{
 		try 
 		{
-			BufferedWriter in = new BufferedWriter(new FileWriter("budgetFile.txt", true);
+			BufferedWriter in = new BufferedWriter(new FileWriter("budgetFile.txt", true));
 			
 			out.write("Budget File");
 			out.newLine();
@@ -294,12 +355,13 @@ class Corporate
 			System.out.println("Problem accessing file \"budgetFile.txt\"");
 		}
 	} // createBudgetFile method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: Creates a File for Expenditure
 	public void createExpenditureFile()
 	{
 		try 
 		{
-			BufferedWriter in = new BufferedWriter(new FileWriter("expenditureFile.txt", true);
+			BufferedWriter in = new BufferedWriter(new FileWriter("expenditureFile.txt", true));
 			
 			out.write("Expenditure File");
 			out.newLine();
@@ -319,7 +381,8 @@ class Corporate
 			System.out.println("Problem accessing file \"expenditureFile.txt\"");
 		}
 	} // createExpenditureFile method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: Compares Budget and Expenditures
 	public void compareBudExp()
 	{
 		double[] budget = new double[3];
@@ -327,7 +390,7 @@ class Corporate
 		
 		try 
 		{
-			BufferedReader in = new BufferedReader(new FileReader("budgetReport.txt");
+			BufferedReader in = new BufferedReader(new FileReader("budgetReport.txt"));
 			
 			line = in.readLine();
 			
@@ -346,7 +409,7 @@ class Corporate
 		
 		try
 		{ 
-			BufferedReader in = new BufferedReader(new FileReader("expenditureReport.txt");
+			BufferedReader in = new BufferedReader(new FileReader("expenditureReport.txt"));
 			
 			line = in.readLine();
 			
@@ -363,32 +426,19 @@ class Corporate
 			System.out.println("Problem accessing file \"expenditureReport.txt\"");
 		}
 		
-	   for (int i = 0; i < 3; i++)
-      {
-         if (expenditure[i] < budget[i])
-         {
-            System.out.println("The budget exceeds the expenditure with a difference of " + budget[i]-expenditure[i] + ".");
-         }
-         else if (expenditure[i] > budget[i])
-         {
-            System.out.println("The expenditure exceeds the budget with a difference of " + expenditure[i]-budget[i] + ".");
-         }
-         else 
-         {
-            System.out.println("The expenditure and the budget have the same value.");
-         }
-      }
 		
 	} // compareBudExp method
-	
+	//Description: Recieves no value and returns none
+   //Purpose: Compares each departments
    public void compareDepartment()
    {
    
    } // compareDepartment method
-   
+   //Description: Recieves no value and returns none
+   //Purpose: Compares each Category
    public void compareCategory()
    {
-      double highestCategory = 0;
+         double highestCategory = 0;
       
       for (int i = 0; i < 50 && categoriesList[i] != null; i++)
       {
@@ -396,9 +446,7 @@ class Corporate
          {
             highestCategory = categoriesList[i].amount;
          }
-      }
-      
+}
    } // compareCategory method
    
 } // Corporate class
-
